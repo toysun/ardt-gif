@@ -1,0 +1,41 @@
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent("animation-manager", {
+        init: function() {
+					let playBtn = document.getElementById("playBtn")
+          let rewindBtn = document.getElementById("rewindBtn")
+          
+          playBtn.addEventListener("click", e => {
+          	this.el.emit("play-anim") 
+          })
+          
+          rewindBtn.addEventListener("click", e => {
+           // set the current scale as the "starting point"
+          this.el.setAttribute("animation__rewind", "from", this.el.getAttribute("rotation"))
+          
+          // pause the current animation, and play the rewind one
+          this.el.emit("pause-anim")
+          this.el.emit("rewind-anim")
+          })
+        }
+      })
+
+    </script>
+<style>
+div {
+  position: fixed;
+  z-index: 10;
+}
+</style>
+    <div>
+      <button id="playBtn"> Play </button>
+      <button id="rewindBtn"> Rewind </button>
+    </div>
+    <a-scene>
+      <a-sphere position="0 1.25 -8" radius="1.25" color="#EF2D5E" animation-manager
+        animation__play="property: rotation; from: 0 10 0; to: 0 -10 0; dur: 2000; dir: alternate; startEvents: play-anim; pauseEvents: pauseA-anim; stopEvents: stop-anim; loop: true"
+       animation__rewind="property: scale; to: 1 1 1; easing: linear; startEvents: rewind-anim"
+         
+       ></a-sphere>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>

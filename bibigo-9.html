@@ -1,0 +1,92 @@
+<!-- import aframe and then ar.js with image tracking / location based features -->
+<!--script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.min.js"></script-->
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.1/dist/aframe-extras.min.js"></script>
+
+<!-- style for the loader -->
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<body style="margin: 0px; overflow: hidden">
+  <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+
+  <!-- a-frame scene -->
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- a-nft is the anchor that defines an Image Tracking entity -->
+    <!-- on 'url' use the path to the Image Descriptors created before. -->
+    <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
+    <a-nft
+      id="marker"
+      type="nft"
+      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/toysun/sg/master/imarker/bibigo-p"
+      smooth="true"
+      smoothcount="10"
+      smoothtolerance=".01"
+      smooththreshold="5"
+    >
+      <a-entity
+        id="scene3"
+        scale="0.03 0.03 0.03"
+        position="-1.2 1.1 -12"
+        rotation="0 0 0"
+        gltf-model="https://cdn.glitch.me/cb8cb838-9f19-470f-9aca-6e773483a84f%2Fblue_edit.glb?v=1639028809398"
+        shadow="receive: true"
+        animation-mixer
+        gesture-handler
+      ></a-entity>
+    </a-nft>
+    <a-nft
+      id="marker1"
+      type="nft"
+      url="https://raw.githubusercontent.com/toysun/sg/master/imarker/bibigo_logo_500"
+      smooth="true"
+      smoothcount="10"
+      smoothtolerance=".01"
+      smooththreshold="5"
+    >
+      <a-entity
+        mindar-image-target="targetIndex: 1"
+        id="scene5"
+        scale="0.03 0.03 0.03"
+        position="-1.2 1.1 -12"
+        rotation="0 0 0"
+        gltf-model="https://cdn.glitch.me/cb8cb838-9f19-470f-9aca-6e773483a84f%2Fred_edit.glb?v=1639205457049"
+        shadow="receive: true"
+        animation-mixer
+        gesture-handler
+      >
+      </a-entity>
+    </a-nft>
+    <a-entity camera position="0 0 0"></a-entity>
+
+    <!-- static camera that moves according to the device movemenents -->
+  </a-scene>
+</body>
