@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-sclable=no, initial-scale=1, maximum-scale=1, minimum-scale-1, width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="google" value="notranslate">
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+    <!--script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script-->
+
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/master/components/template/dist/aframe-template-component.min.js"></script>
+
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js">-->
+     <script src="aframe-spritesheet-animation.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="aframe-troika-text.js"></script>
+     <script src="aframe-spe-particles-component.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@master/dist/aframe-particle-system-component.min.js"></script>
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene                   vr-mode-ui="enabled: false"
+      loading-screen="dotsColor: white; backgroundColor: #grey"
+      device-orientation-permission-ui="enabled: false"
+      ar-session-notifier      
+      arjs="sourceType: webcam; debugUIEnabled: false;">
+            <a-assets>
+        <audio
+          id="aud"
+          src="https://cdn.glitch.global/9b4e3877-21ac-4e94-b55a-c8b576c5b670/disney-intro-1.mp3?v=1666075254104"
+        ></audio>
+        <img id="glow" src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/glow.png?v=1672756163242"/>
+      </a-assets>
+<a-entity
+        id="selector"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/flame_animation.glb?v=1692051469877"
+        scale="0.2 0.2 0.2"
+        rotation="0 0 0"
+        position="-1.1 0.65 -5"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+
+        animation__2="property: rotation; from: 0 10 0; to: 0 -360 0; delay: 200; dur: 15000; loop: true"
+      ></a-entity>
+      <a-entity
+        id="selector1"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/candle.glb?v=1692933821648"
+        scale="4 4 4"
+        rotation="0 0 0"
+        position="0.7 -6.5 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        
+      ></a-entity>
+      <a-entity
+        id="selector2"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/flame_animation.glb?v=1692051469877"
+        scale="0.2 0.2 0.2"
+        rotation="0 0 0"
+        position="1 0.65 -5"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+
+        animation__2="property: rotation; from: 0 10 0; to: 0 -360 0; delay: 200; dur: 15000; loop: true"
+      ></a-entity>
+      <a-entity
+        id="selector3"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/candle.glb?v=1692933821648"
+        scale="4 4 4"
+        rotation="0 0 0"
+        position="3.3 -6.5 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+
+        
+      ></a-entity>
+      
+                 <!--a-entity
+        id="selector1"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/firelings.glb?v=1692024300644"
+        scale="1 1 1"
+        rotation="0 10 0"
+        position="0 1.7 -10"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+
+        animation__2="property: rotation; from: 0 10 0; to: 0 -360 0; delay: 200; dur: 15000; loop: true"
+      ></a-entity-->
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/borisu-tree-1.gif?v=1692004176573); opacity: 1; alphaTest: 0.5; side: double;"
+        position="0 1.7 -10"
+        color="white"
+        scale="9 8 -19"
+  
+      ></a-plane-->
+      <a-plane
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/jijang-big-c.png?v=1693558528509; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1.2 -5"
+        color="white"
+        scale="2 3 3"
+
+      ></a-plane>
+            <a-plane
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%E2%80%94Pngtree%E2%80%94flying%20fairy_7218650.png?v=1693570926540; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="1 2.2 -5"
+        color="white"
+        scale="1 2 2"
+animation="property: position; from: 1.5 4.2 -5; to: 1 2.2 -5; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-plane>
+            <a-plane
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%E2%80%94Pngtree%E2%80%94flying%20fairy_7218650-reverse.png?v=1693570863212; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="-1 2.2 -5"
+        color="white"
+        scale="1 2 2"
+animation="property: position; from: -1.5 4.2 -5; to: -1 2.2 -5; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-plane>
+                  <!--a-entity 
+                position="0 5 -5" 
+                rotation="180 180 0"
+                particle-system="preset: default;
+                                 texture: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.png?v=1691995060714; 
+                                 color: #FFF, #BDBDBD; 
+                                 direction: 1; 
+                                 maxAge: 1;
+                                 particleCount: 30;
+                                 size: 5.8;
+                                 positionSpread: 10 10 10;
+                                 velocityValue: 0 12 -10;"
+                 ></a-entity-->
+      <a-troika-text
+        position="0 2 -2"
+        font="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/%ED%96%89%EB%B3%B5%EA%B3%A0%ED%9D%A5B.ttf?v=1658800506733"
+        color="#99F"
+        value="지장보살"
+        material="shader: standard; metalness: 0.8; roughness: 0.4;"
+      ></a-troika-text>
+            <a-entity
+        light="color: #FFF; intensity: 0.5"
+        animation="property: position; from: -1 0 1; to: 1 0 1; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-entity>
+            <a-entity
+        id="glowPulse"
+        position="0 1.6 -10"
+        animation__spin="property: rotation; from: 0 0 0; to: 0 0 0; dur: 4000; loop: true; easing: linear;"
+      >
+        <!--a-sphere radius="0.1" material="src: #grid; emissive: yellow; emissive-intensity: 0.5;"
+		animation__pulse="property: material.emissiveIntensity; from: 0.5; to: 0.0; dur: 1000; loop: true; dir: alternate; easing: linear;"></a-sphere-->
+        <a-image
+          width="10"
+          height="10"
+          src="#glow"
+          look-at="#player"
+          color="white"
+          material="transparent: true; opacity: 0.5; alphaTest: 0.01;"
+          animation__pulse="property: material.opacity; from: 2.0; to: 0.5; dur: 5000; loop: true; dir: alternate; easing: linear;"
+        ></a-image>
+      </a-entity>
+ <!--a-sphere
+      radius = "0.05"
+      position = "0 1.8 -8"
+      color = "#FFFFFF">
+      <a-entity 
+        spe-particles="
+          texture: https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/sparkle.png?v=1672751728536;
+          color: #FFFFFF, #FFFF00; 
+          size: 35, 0;
+          distribution: SPHERE;
+          radius: 0.001;
+          velocity: 0.001;
+          velocity-spread: 1.2; 
+          angle: 0, 8.28;
+          particle-count: 100;
+          blending: additive;
+          maxAge: 3; ">
+      </a-entity> 
+      </a-sphere-->
+      <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+      <a-light
+        type="directional"
+        light="castShadow: true;
+                      shadowMapHeight: 1024;
+                      shadowMapWidth: 1024;
+                      shadowCameraLeft: -7;
+                      shadowCameraRight: 5;
+                      shadowCameraBottom: -5;
+                      shadowCameraTop: 5;"
+        id="light"
+        target="dino"
+        position="-1.8 4 1"
+      ></a-light>
+           <a-camera  rotation-reader
+               look-controls="enabled: false"> </a-camera>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="google" value="notranslate">
+
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/master/components/template/dist/aframe-template-component.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="aframe-troika-text.js"></script>
+    <script src="aframe-spe-particles-component.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@master/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    
+    <script>
+      
+      AFRAME.registerComponent("blink-on-click", {
+              
+         init() {
+            
+          var el = this.el;
+ 
+          el.addEventListener("click", function() {
+          const FlameLeft = document.getElementById("flame_left");
+          const FlameRight = document.getElementById("flame_right");
+          const FairyLeft = document.getElementById("fairy_left");
+          const FairyRight = document.getElementById("fairy_right");
+          const GlowPulse = document.getElementById("glowPulse");
+          const Aud = document.getElementById("aud");  
+        
+          const Blink = FlameLeft.getAttribute("visible");
+          
+        
+          FlameLeft.setAttribute('visible', !Blink); 
+          FlameRight.setAttribute('visible', !Blink); 
+          FairyLeft.setAttribute('visible', !Blink); 
+          FairyRight.setAttribute('visible', !Blink); 
+          GlowPulse.setAttribute('visible', !Blink);   
+            
+          if(Aud.paused && Aud.currentTime >= 0 && !Aud.ended) {
+            Aud.play();
+          } else {
+            Aud.pause();
+          }  
+            
+        });
+        }
+      });  
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sceneEl = document.querySelector("a-scene");
+        const arSystem = sceneEl.systems["mindar-face-system"];
+
+
+        const switchCameraButton = document.querySelector(
+          "#flip-btn"
+        );
+
+        // arReady event triggered when ready
+        sceneEl.addEventListener("arReady", (event) => {
+          console.log("ar ready");
+        });
+
+        // detect target found
+        sceneEl.addEventListener("targetFound", (event) => {
+          console.log("target found");
+        });
+
+        // detect target lost
+        sceneEl.addEventListener("targetLost", (event) => {
+          console.log("target lost");
+        });
+
+        // arError event triggered when something went wrong. Mostly browser compatbility issue
+        sceneEl.addEventListener("arError", (event) => {
+          console.log("ar error");
+        });
+
+
+        switchCameraButton.addEventListener("click", function () {
+          arSystem.switchCamera();
+        });
+      });
+    </script>
+    
+    <style>
+      body {
+        margin: 0;
+      }
+      .tab-start {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(120, 120, 120, 0.9);
+        z-index: 999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tab-start div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+      .example-container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .ChangeButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/9b4e3877-21ac-4e94-b55a-c8b576c5b670/flip_btn.png?v=1694500964892");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 80%;
+        width: 40px;
+        height: 40px;
+                /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .logoWrapper {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 100%;
+        z-index: -1; /* needs to be in the background so that it doesn't overlay the title (from html) */
+      }
+
+      .logoImage {
+        width: 29%; /* 104px */
+        height: 10%; /*  40px */
+        visibility: visible; /* needs to be added, so that the image is always visible. Otherwise it could flicker during click-events or even be hidden (on iOS (Vers.13.5.1, Safari)) */
+      }
+      .HomeButton {
+        background-color: White;
+        background-image: url("https://ardocent.com/aframe/wonder/image/home.png");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 10%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .HomeButton:hover {
+        background-color: Gold;
+      }
+      .ReloadButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/camera-flip.png?v=1666830382378");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        top: 5%;
+        left: 90%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .ReloadButton:hover {
+        background-color: Gold;
+      }
+      
+    </style>
+    
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+    <div id="start_area" class="tab-start" align="center">  
+      <input 
+        id="start_btn"     
+        type="image"
+        src="https://cdn.glitch.global/9b4e3877-21ac-4e94-b55a-c8b576c5b670/jijang_start.png?v=1694499596752"
+        style="positon: relative; z-index: 999999; display: flex; top: 0; left: 0;
+        justify-content: center; align-items: center; height: 70%; width: 50%"/>      
+    </div>
+    
+    <button class="ChangeButton" id="flip-btn"></button>
+    
+    <div id="wrapper">
+    
+    <div class="example-container">
+      <button
+           class="HomeButton"
+           id="home-btn"
+           onclick="window.open('https://imager-ardocent.glitch.me/moon-index1.html','_self');"
+         ></button>
+      
+        <button
+           class="ReloadButton"
+           id="reload-btn"
+           onclick="location.reload(true);"
+        ></button>
+      
+    <a-scene 
+      cursor="rayOrigin: mouse"        
+      vr-mode-ui="enabled: false"
+      loading-screen="dotsColor: red; backgroundColor: black"
+      device-orientation-permission-ui="enabled: false"
+      ar-session-notifier   
+      arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-assets>
+        <audio
+          id="aud"
+          src="https://cdn.glitch.global/9b4e3877-21ac-4e94-b55a-c8b576c5b670/%EC%A7%80%EC%9E%A5%EB%B3%B4%EC%82%B4_%EB%B0%B0%EA%B2%BD%EC%9D%8C.mp3?v=1694481262756"
+        ></audio>
+        <img id="glow" 
+             src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/glow.png?v=1672756163242"/>
+      </a-assets>
+         
+      <a-entity
+        id="flame_left"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/flame_animation.glb?v=1692051469877"
+        scale="0.2 0.2 0.2"
+        rotation="0 0 0"
+        position="-1.1 0.65 -5"
+        visible="false"
+        animation-mixer
+        shadow="receive: false"
+        animation__2="property: rotation; from: 0 10 0; to: 0 -360 0; delay: 200; dur: 15000; loop: true"
+      ></a-entity>
+      <a-entity                
+        id="candle_left"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/candle.glb?v=1692933821648"
+        scale="4 4 4"
+        rotation="0 0 0"
+        position="0.7 -6.5 -3"
+        visible="true"
+      ></a-entity>
+      <a-entity geometry="primitive: plane" position="-1 0.2 -2.8" material="color: red; visible: false" blink-on-click></a-entity>
+      
+      
+      <a-entity
+        id="flame_right"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/flame_animation.glb?v=1692051469877"
+        scale="0.2 0.2 0.2"
+        rotation="0 0 0"
+        position="1 0.65 -5"
+        visible="false"
+        animation-mixer
+        shadow="receive: false"
+        animation__2="property: rotation; from: 0 10 0; to: 0 -360 0; delay: 200; dur: 15000; loop: true"
+      ></a-entity>
+      <a-entity
+        id="candle_right"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/candle.glb?v=1692933821648"
+        scale="4 4 4"
+        rotation="0 0 0"
+        position="3.3 -6.5 -3"
+        visible="true"
+        shadow="receive: false"  
+      ></a-entity>
+      <a-entity geometry="primitive: plane" position="1 0.2 -2.8" material="color: red; visible: false" blink-on-click></a-entity>
+      
+      <a-plane
+        id="jijang"
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/jijang-big-c.png?v=1693558528509; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1.2 -5"
+        color="white"
+        scale="2 3 3"
+      ></a-plane>
+      
+      <a-plane
+        id="fairy_left"
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%E2%80%94Pngtree%E2%80%94flying%20fairy_7218650.png?v=1693570926540; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="1 2.2 -5"
+        visible="false"
+        color="white"
+        scale="1 2 2"
+        animation="property: position; from: 1.5 4.2 -5; to: 1 2.2 -5; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-plane>
+      <a-plane
+        id="fairy_right"
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%E2%80%94Pngtree%E2%80%94flying%20fairy_7218650-reverse.png?v=1693570863212; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="-1 2.2 -5"
+        visible="false"
+        color="white"
+        scale="1 2 2"
+        animation="property: position; from: -1.5 4.2 -5; to: -1 2.2 -5; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-plane>
+
+      <a-troika-text
+        position="0 2 -2"
+        font="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/%ED%96%89%EB%B3%B5%EA%B3%A0%ED%9D%A5B.ttf?v=1658800506733"
+        color="#99F"
+        value="지장보살"
+        material="shader: standard; metalness: 0.8; roughness: 0.4;"
+      ></a-troika-text>
+      <a-entity
+        light="color: #FFF; intensity: 0.5"
+        animation="property: position; from: -1 0 1; to: 1 0 1; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-entity>
+      <a-entity
+        id="glowPulse"
+        visible="false"
+        position="0 1.6 -10"
+        animation__spin="property: rotation; from: 0 0 0; to: 0 0 0; dur: 4000; loop: true; easing: linear;"
+      >
+        <a-image
+          width="10"
+          height="10"
+          src="#glow"
+          look-at="#player"
+          color="white"
+          material="transparent: true; opacity: 0.5; alphaTest: 0.01;"
+          animation__pulse="property: material.opacity; from: 2.0; to: 0.5; dur: 5000; loop: true; dir: alternate; easing: linear;"
+        ></a-image>
+
+      </a-entity>
+
+      <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+      
+      <a-camera  
+                position="0 1.6 0"
+                rotation-reader
+               look-controls="enabled: false" >
+      </a-camera>
+      </a-scene>
+    </div>
+    </div>
+    
+     <script>
+     document.getElementById("start_btn").addEventListener("click", function() {
+      
+        var Start_Area = document.getElementById("start_area");
+        var PlayBtn = document.getElementById("start_btn");
+       /*
+        var pln = document.querySelector("#plane1");
+              
+       pln.setAttribute("visible", true);
+         
+        pln.setAttribute(
+            "animation",
+            "property: scale; dur: 1000; from: 0 0 0; to: 1 1 1"
+        );
+        */
+                  
+        Start_Area.parentNode.removeChild(Start_Area);
+                
+      });
+  </script>
+   
+  </body>
+</html>

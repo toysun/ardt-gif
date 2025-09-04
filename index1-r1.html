@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-sclable=no, initial-scale=1, maximum-scale=1, minimum-scale-1, width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="google" value="notranslate" />
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <!--script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script-->
+
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/master/components/template/dist/aframe-template-component.min.js"></script>
+
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js">-->
+
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+      body {
+        margin: 0;
+      }
+      .tab-start {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(120, 120, 120, 0.9);
+        z-index: 999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tab-start div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+      .example-container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .options-panel {
+        position: fixed;
+        left: 60%;
+        top: 10;
+        z-index: 2;
+      }
+      .options-panel img {
+        border: solid 2px;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        cursor: pointer;     
+        background-color: white;
+      }
+      .options-panel img.selected {
+        border-color: green;
+        background-color: gold;
+      }
+      .ChangeButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/84219226-bfa8-4881-9a68-88e43606a2ce/camera-rotate.png?v=1694390587914");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 70%;
+        width: 40px;
+        height: 40px;
+                /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .logoWrapper {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 100%;
+        z-index: -1; /* needs to be in the background so that it doesn't overlay the title (from html) */
+      }
+
+      .logoImage {
+        width: 29%; /* 104px */
+        height: 10%; /*  40px */
+        visibility: visible; /* needs to be added, so that the image is always visible. Otherwise it could flicker during click-events or even be hidden (on iOS (Vers.13.5.1, Safari)) */
+      }
+      .HomeButton {
+        background-color: White;
+        background-image: url("https://ardocent.com/aframe/wonder/image/home.png");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 5%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .HomeButton:hover {
+        background-color: Gold;
+      }
+            
+      .ReloadButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/camera-flip.png?v=1666830382378");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 85%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .ReloadButton:hover {
+        background-color: Gold;
+      }
+              h3 {
+                position: absolute;
+        top: 55%;
+        left: 20%;
+        width: 50%;
+          color: white;
+ font-family: "AppleSDGothicNeoM";
+        src: url('https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/AppleSDGothicNeoM.ttf?v=1671085239370') format('ttf');
+                font-size: 24px;
+          margin: 18px;  
+      }
+        p {
+                          position: absolute;
+        top: 70%;
+        left: 20%;
+        width: 50%;
+          color: white;
+          font-family: "AppleSDGothicNeoM";
+        src: url('https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/AppleSDGothicNeoM.ttf?v=1671085239370') format('ttf');
+          font-size: 16px;
+          margin: 18px;
+
+        }
+ #blink_effect {
+            color: white;
+            font-size: 20 px;
+            transition: 1.5s;
+        }  
+    </style>
+    
+    <script src="https://unpkg.com/merge-images"></script>
+
+    <link rel="stylesheet" href="style-capture.css" />
+
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+        <div id="start_area" class="tab-start" align="center">     
+        <input 
+        id="start_btn"     
+        type="image"
+        src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EB%8B%AC%ED%86%A0%EB%81%BC_s_start.png?v=1699194388944"
+        style="position: relative; z-index: 999999; display: flex; top: -10%; left: 0%;
+        justify-content: center; align-items: center; height: 200px; width: 50%"/>
+          <p><h3>     
+            클릭! 달토끼와 함께<br>
+            달까지 즐거운 여행!
+          </h3>
+          </p> 
+              <p><i  id="blink_effect" class="fa-solid fa-flag" style="font-size:16px;color:red;"></i><br>   
+             증강현실(AR) 사용시,<br>
+            주변 사물과 부딪치지 않도록 주의하세요.
+          
+          </p> 
+               <script>
+        let blinking_text = document.getElementById('blink_effect');
+        setInterval(function() {
+            blinking_text.style.display = (blinking_text.style.display == 'none' ? '' : 'none');
+        }, 1200);
+    </script>
+      </div>  
+      <div class="logoWrapper">
+        <input
+          id="logo"
+          type="image"
+          class="logoImage"
+          src="https://cdn.glitch.global/06d05559-0ed0-41b1-938c-c5b9769f244e/mok-a-logo-white-full.png?v=1684124469622"
+        />
+      </div>
+      <button class="ChangeButton" id="flip-btn"></button>
+    
+      <div id="wrapper">
+    
+        <div class="example-container">
+        <button
+           class="HomeButton"
+           id="home-btn"
+           onclick="window.open('https://imager-ardocent.glitch.me/moon-index1.html','_self');"
+        ></button>
+      
+        <button
+           class="ReloadButton"
+           id="reload-btn"
+           onclick="location.reload(true);"
+        ></button>
+
+    
+      <a-scene
+      vr-mode-ui="enabled: false"
+      loading-screen="dotsColor: white; backgroundColor: #grey"
+      device-orientation-permission-ui="enabled: false"
+      ar-session-notifier      
+      arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-assets>
+        <audio
+          id="aud"
+          src="https://cdn.glitch.global/06d05559-0ed0-41b1-938c-c5b9769f244e/buddha-healing-flute-music-calming-relaxing-music-for-body-souls-161796.mp3?v=1694444378772"
+        ></audio>
+        <img
+          id="glow"
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/glow.png?v=1672756163242"
+        />
+      </a-assets>
+      <a-entity
+        id="selector"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.glb?v=1693368236829"
+        scale="0.0013 0.0013 0.0013"
+        rotation="0 0 0"
+        position="-0.6 1.9 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: position; to: -1.2 1.8 -3; dur: 8000; loop: true; dir: alternate; easing: easeInOutSine"
+      ></a-entity>
+      <a-entity
+        id="selector2"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.glb?v=1693368236829"
+        scale="0.001 0.001 0.0011"
+        rotation="0 0 0"
+        position="0.4 1.2 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: position; to: 0.8 1.1 -3; dur: 8000; loop: true; dir: alternate; easing: easeInOutSine"
+      ></a-entity>
+      <a-entity
+        id="selector1"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.glb?v=1693368236829"
+        scale="0.0015 0.0015 0.0015"
+        rotation="0 180 0"
+        position="0.7 1.8 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: position; to: 0.9 2.2 -3; dur: 8000; loop: true; dir: alternate; easing: easeInOutSine"
+      ></a-entity>
+      <a-circle
+        id = "moon1"
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/daltokki.gif?v=1692202523231); opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 2.5 -18"
+        color="white"
+        radius="2.2"
+        scale="1.5 0.7 1"
+        animation="startEvents: click; property: position; to: 0 2.5 -8; dur: 8000; loop: false;"
+        sound="src: #button2; on: click; poolSize: 3"
+        sound__mouseenter="src: #button2; on: mouseenter; poolSize: 2"
+      ></a-circle>
+      <!--a-sphere
+        id = "moon2"
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EB%B3%B5%EC%9E%90%EB%AC%B8-yellow.png?v=1693372317981; opacity: 0.5; alphaTest: 0.2; side: double;"
+        position="0 2.5 -18"
+        color="white"
+        radius="2.3"
+        scale="1.5 0.7 1.5"
+        sound="src: #button2; on: click; poolSize: 3"
+        sound__mouseenter="src: #button2; on: mouseenter; poolSize: 2"
+        animation="property: position; to: 0.2 1.7 -8; dur: 8000; loop: false;"
+        animation__1="startEvents: click; property: rotation; to: 0 -360 0; loop: false; delay: 8000; dur: 8000"
+        animation__2="startEvents: click; property: scale; to: 0 0 0; loop: false; delay: 16000; dur: 2000"
+      >
+      </a-sphere-->
+      <a-entity
+        id="glowPulse"
+        position="0 1.6 -10"
+        animation__spin=" property: rotation; from: 0 0 0; to: 0 0 0; dur: 4000; loop: false; easing: linear;"
+      >
+        <a-image
+          width="8"
+          height="8"
+          src="#glow"
+          look-at="#player"
+          color="white"
+          material="transparent: true; opacity: 1.0; alphaTest: 0.01;"
+          animation__pulse="property: material.opacity; from: 2.0; to: 0.5; dur: 5000; loop: false; dir: alternate; easing: linear;"
+        ></a-image>
+      </a-entity>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/hell-saja-color.gif?v=1691648100228); opacity: 1; alphaTest: 0.5; side: double;"
+        position="-2 1 -8"
+        color="white"
+        scale="2 3 2"
+      ></a-plane-->
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/daltokki-sample.gif?v=1691647204574); opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1 -8"
+        color="white"
+        scale="2 3 2"      
+      ></a-plane-->
+
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire-3352_256.gif?v=1691805072935); opacity: 1; alphaTest: 0.5; side: double;"
+        position="2 1 -8"
+        color="white"
+        scale="2 2 2"
+      ></a-plane-->
+      <a-entity light="type: ambient; intensity: 1;"></a-entity>
+      <a-light
+        type="directional"
+        light="castShadow: true;
+                      shadowMapHeight: 1024;
+                      shadowMapWidth: 1024;
+                      shadowCameraLeft: -7;
+                      shadowCameraRight: 5;
+                      shadowCameraBottom: -5;
+                      shadowCameraTop: 5;"
+        id="light"
+        target="dino"
+        position="-1.8 4 1"
+      ></a-light>
+    <a-camera rotation-reader look-controls="enabled: false"> </a-camera>
+    <button class="button" id="mybutton"></button>      
+    </a-scene>
+    
+    <button class="capturebtn" id="capture" style="vertical-align:middle"></button>
+      <button class="savebtn" id="save" style="vertical-align:middle"></button>
+       <!-- The Modal -->
+      <div id="myModal" class="modal" align="center">
+      <!-- Modal content -->
+      <div>
+        <img class="modal-content" id="img01" />
+        <span
+          class="closebtn">
+          <img
+            src="https://cdn.glitch.global/be340911-435f-4b68-b71f-00337c3212ac/close-white.png?v=1661493491151"
+            width="30px"
+            height="30px"
+          />
+        </span>
+        <div id="caption"></div>
+        
+    </div>
+    </div>
+          
+    </div>
+    </div>
+
+    <script type="text/javascript" src="hmodal_active.js"></script>
+    <script type="text/javascript" src="capture-1.js"></script>      
+    
+          
+     <script>
+    var currentEvent;
+    
+    window.addEventListener('load', function() {
+                // you can access the THREE.Light object from the shadow-light element
+      var lightEl = document.querySelector('a-shadow-light');
+  //    console.log(lightEl.shadowLight);
+      currentEvent = "null";
+    });
+    
+    
+     document.getElementById("start_btn").addEventListener("click", function() {
+      
+        var Start_Area = document.getElementById("start_area");
+        var PlayBtn = document.getElementById("start_btn");
+        this.aud = document.querySelector("#aud");
+ 
+        this.aud.play();   
+       
+        currentEvent = "click";
+        document.getElementById("moon1").dispatchEvent(new CustomEvent(currentEvent));
+        //document.getElementById("moon2").dispatchEvent(new CustomEvent(currentEvent));
+          
+        Start_Area.parentNode.removeChild(Start_Area);
+  
+      });
+  </script>
+  </body>
+   
+</html>

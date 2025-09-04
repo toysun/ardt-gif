@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-sclable=no, initial-scale=1, maximum-scale=1, minimum-scale-1, width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="google" value="notranslate" />
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!--script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script-->
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/master/components/template/dist/aframe-template-component.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js">-->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="
+https://cdn.jsdelivr.net/npm/aframe-orbit-controls-component-2@0.1.14/dist/aframe-orbit-controls-component.min.js
+"></script>    
+    <script src="https://unpkg.com/aframe-star-system-component@1.0.0/index.js"></script>    
+    <script src="aframe-troika-text.js"></script>
+    
+    <!--script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script-->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--script>
+    $(function() {
+  // 레이어 display none 상태
+  $(".layer_wrap").hide();
+  //레이어팝업 위치 지정 function 만들기
+  function layer_position(){
+    var win_W = $(window).width();
+    var win_H = $(window).height();
+  //  $(".layer_wrap").css({'left':(win_W-300)/2, 'top':(win_H-100)/2});
+  };
+  //레이어팝업 open 상태 function 만들기
+  function layer_open(no){
+    $(".layer_wrap[layer="+no+"]").fadeIn();
+
+    layer_position();
+    
+  };
+  //레이어팝업 close 상태 function 만들기
+  function layer_close(){
+    $(".layer_wrap, .layer_bg").fadeOut();
+  };
+  //링크 클릭시 해당 레이어팝업 호출
+  $(".btn_layer").click(function () {
+    var no = $(this).attr("layer");
+    layer_open(no);
+  });
+  //닫기 버튼 클릭시 레이어 닫기
+  $(".btn_close").click(function () {
+    layer_close();
+  });
+  //반응형 대응 - 레이어 위치 잡기
+  $(window).resize(function () {
+    layer_position();
+  });
+})
+    </script-->
+   
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 100px;
+}
+
+.pop-layer .pop-container {
+  padding: 20px 25px;
+}
+
+.pop-layer p.ctxt {
+  color: #666;
+  line-height: 50px;
+}
+
+.pop-layer .btn-r {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding-top: 10px;
+  border-top: 1px solid #DDD;
+  text-align: right;
+}
+
+.pop-layer {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #3571B5;
+  z-index: 99999;
+}
+
+.dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+}
+
+.dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+  display: block;
+}
+
+a.btn-layerClose {
+  display: inline-block;
+  height: 25px;
+  padding: 0 14px 0;
+  border: 1px solid #304a8a;
+  background-color: #3f5a9d;
+  font-size: 13px;
+  color: #fff;
+  line-height: 25px;
+}
+
+a.btn-layerClose:hover {
+  border: 1px solid #091940;
+  background-color: #1f326a;
+  color: #fff;
+}
+     
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      body {
+        margin: 0;
+      }
+      .tab-start {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(120, 120, 120, 0.9);
+        z-index: 999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tab-start div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+      .example-container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .options-panel {
+        position: fixed;
+        left: 60%;
+        top: 10;
+        z-index: 2;
+      }
+      .options-panel img {
+        border: solid 2px;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        cursor: pointer;     
+        background-color: white;
+      }
+      .options-panel img.selected {
+        border-color: green;
+        background-color: gold;
+      }
+      .ChangeButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/84219226-bfa8-4881-9a68-88e43606a2ce/camera-rotate.png?v=1694390587914");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 70%;
+        width: 40px;
+        height: 40px;
+                /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .logoWrapper {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 100%;
+        z-index: -1; /* needs to be in the background so that it doesn't overlay the title (from html) */
+      }
+
+      .logoImage {
+        width: 29%; /* 104px */
+        height: 10%; /*  40px */
+        visibility: visible; /* needs to be added, so that the image is always visible. Otherwise it could flicker during click-events or even be hidden (on iOS (Vers.13.5.1, Safari)) */
+      }
+      .HomeButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/docent-headphone.png?v=1699944250478");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 5%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .ListButton:hover {
+        background-color: Gold;
+      }
+      .ListButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/list-ar.png?v=1699923996680");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 20%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .ListButton:hover {
+        background-color: Gold;
+      }
+            
+      .ReloadButton {
+        background-color: White;
+        background-image: url("https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/camera-flip.png?v=1666830382378");
+        background-size: cover;
+        background-position: center;
+        border: none;
+        padding: 5px;
+        display: inline-block;
+        margin: 1px 1px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 5%;
+        left: 85%;
+        width: 40px;
+        height: 40px;
+        /*display: flex;*/
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      .ReloadButton:hover {
+        background-color: Gold;
+      }
+              h3 {
+                position: absolute;
+        top: 55%;
+        left: 20%;
+        width: 50%;
+          color: white;
+ font-family: "AppleSDGothicNeoM";
+        src: url('https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/AppleSDGothicNeoM.ttf?v=1671085239370') format('ttf');
+                font-size: 24px;
+          margin: 18px;  
+      }
+        p {
+                          position: absolute;
+        top: 70%;
+        left: 20%;
+        width: 50%;
+          color: white;
+          font-family: "AppleSDGothicNeoM";
+        src: url('https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/AppleSDGothicNeoM.ttf?v=1671085239370') format('ttf');
+          font-size: 16px;
+          margin: 18px;
+
+        }
+ #blink_effect {
+            color: white;
+            font-size: 20 px;
+            transition: 1.5s;
+        }  
+    </style>
+        <script src="https://unpkg.com/merge-images"></script>
+
+    <link rel="stylesheet" href="style-capture.css" />
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+      <div id="start_area" class="tab-start" align="center">     
+        <input 
+        id="start_btn"     
+        type="image"
+        src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EC%A0%80%EC%8A%B9%EC%82%AC%EC%9E%90_s_start.png?v=1700033546346"
+        style="position: relative; z-index: 999999; display: flex; top: -10%; left: 0%;
+        justify-content: center; align-items: center; height: 200px; width: 50%"/>
+          <p><h3>     
+            클릭! 번을 눌러서<br>
+            저승사자의 사후세계 길안내를 받으세요!
+          </h3>
+          </p> 
+              <p><i  id="blink_effect" class="fa-solid fa-flag" style="font-size:16px;color:red;"></i><br>   
+             증강현실(AR) 사용시,<br>
+            주변 사물과 부딪치지 않도록 주의하세요.
+          
+          </p> 
+      <script>
+        let blinking_text = document.getElementById('blink_effect');
+        setInterval(function() {
+            blinking_text.style.display = (blinking_text.style.display == 'none' ? '' : 'none');
+        }, 1200);
+      </script>
+      </div> 
+  
+      <div class="logoWrapper">
+        <input
+          id="logo"
+          type="image"
+          class="logoImage"
+          src="https://cdn.glitch.global/06d05559-0ed0-41b1-938c-c5b9769f244e/mok-a-logo-white-full.png?v=1684124469622"
+        />
+      </div>
+  
+      <button class="ChangeButton" id="flip-btn"></button>
+  
+  <a href="#layer2" class="btn-example">
+        <button
+           class="ListButton"
+           id="list-btn"        
+         ></button></a>
+          <div class="dim-layer">
+            <div class="dimBg"></div>
+              <div id="layer2" class="pop-layer">
+                <div class="pop-container">
+                  <div class="pop-conts">
+                <!--content //-->
+                
+            <li class="ctxt mb-3"><a href="">괘불</a></li>
+            <li class="ctxt mb20"><a href="">윤장대</a></li>
+            <li class="ctxt mb20"><a href="">법고</a></li>
+            <li class="ctxt mb20"><a href="">소원지</a></li>
+            <!--p class="archar"><a href="">5. 달-Helmet AR</a></p>
+            <p class="archar"><a href="">6. 달-토끼</a></p>
+            <p class="archar"><a href="">7. 저승사자</a></p>
+            <p class="archar"><a href="">8. 진광대왕</a></p>
+            <p class="archar"><a href="">9. 업경대 AR</a></p>
+            <p class="archar"><a href="">10. 염라대왕</a></p>
+            <p class="archar"><a href="">11. 태산대왕</a></p>
+            <p class="archar"><a href="">12. 지장보살</a></p>
+            <p class="archar"><a href="">13. 반야용선도</a></p>
+            <p class="archar"><a href="">14. 석가모니고행상</a></p-->
+           
+            <div class="btn-r">
+              <a href="#" class="btn-layerClose">Close</a>
+            </div>
+          </div>
+                </div>
+            </div>
+          </div>
+          
+           <script>
+$('.btn-example').click(function(){
+        var $href = $(this).attr('href');
+        layer_popup($href);
+    });
+    function layer_popup(el){
+
+        var $el = $(el);		//레이어의 id를 $el 변수에 저장
+        var isDim = $el.prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+
+        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+        var $elWidth = ~~($el.outerWidth()),
+            $elHeight = ~~($el.outerHeight()),
+            docWidth = $(document).width(),
+            docHeight = $(document).height();
+
+        // 화면의 중앙에 레이어를 띄운다.
+        if ($elHeight < docHeight || $elWidth < docWidth) {
+            $el.css({
+                marginTop: -$elHeight /2,
+                marginLeft: -$elWidth/2
+            })
+        } else {
+            $el.css({top: 0, left: 0});
+        }
+
+        $el.find('a.btn-layerClose').click(function(){
+            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+            return false;
+        });
+
+        $('.layer .dimBg').click(function(){
+            $('.dim-layer').fadeOut();
+            return false;
+        });
+
+    }
+    </script>
+          
+    
+      <div id="wrapper">
+    
+        <div class="example-container">
+        <button
+           class="HomeButton"
+           id="home-btn"
+           onclick="window.open('https://imager-ardocent.glitch.me/moon-index1.html','_self');"
+        ></button>
+                
+      
+        <button
+           class="ReloadButton"
+           id="reload-btn"
+           onclick="location.reload(true);"
+        ></button>
+    <a-scene 
+      device-orientation-permission-ui="enabled: false"
+      loading-screen="dotsColor: red; backgroundColor: black"
+      ar-session-notifier
+      cursor-modifier
+      vr-mode-ui="enabled: false;"
+      renderer="physicallyCorrectLights:true; colorManagement:true; exposure:1; toneMapping:ACESFilmic; antialias: true; logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      id="scene"
+      light="defaultLightsEnabled: true">
+      <!-- This is a "mixin" we can apply to planets to make them
+            rotate-->
+      <a-mixin
+        id="rotation"
+        animation="property: rotation; loop: true; from:  0 0 0; to: 0 360 0; dur: 20000; easing: linear;"
+      ></a-mixin>
+
+      <!-- here is a "mixin" that we can apply to a container to make the
+            planet inside it orbit -->
+      <a-mixin
+        id="orbit"
+        animation="property: rotation; loop: true; to: 0 360 0; dur: 40000; easing: linear;"
+      ></a-mixin>
+      <!-- ASSETS -->
+      <a-assets>
+                <audio
+          id="aud"
+          src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EC%A0%80%EC%8A%B9%EC%82%AC%EC%9E%90-mix.mp3?v=1694100661797"
+        ></audio>
+        <audio
+          id="button2"
+          src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EC%A0%80%EC%8A%B9%EC%82%AC%EC%9E%90-mix.mp3?v=1694100661797"
+        ></audio>
+        <img
+          id="glow"
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/glow.png?v=1672756163242"
+        />
+      </a-assets>
+
+      <!--a-circle
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/daltokki.gif?v=1692202523231); opacity: 0.7; alphaTest: 0.5; side: double;"
+        position="0 2 -18"
+        color="white"
+        radius="2"
+        animation="property: position; to: 0.2 1.7 -8; dur: 8000; loop: false; "
+      ></a-circle-->
+      <a-plane
+               id="saja"
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/ma-tiger.gif?v=1700085174598); opacity: 1; alphaTest: 0.5; side: double;"
+        position="0 1.5 -18"
+        color="white"
+        scale="3 4 3"
+        animation="startEvents: click; property: position; to: 0 1.7 -12; dur: 8000; loop: true;"
+        animation__pos="startEvents: click; property: position; from: 0 1.2 -12; to: 0 2 -12; loop: true; dur: 1500; dir: alternate; easing: easeInOutSine"
+      >
+        <a-entity
+          id="selector"
+          gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire_animation%20(1).glb?v=1692024665041"
+          scale="0.4 0.2 0.2"
+          rotation="0 0 0"
+          position="-0.9 0 -5"
+          visible="true"
+          animation-mixer
+          shadow="receive: false"
+          mixin="rotation"
+        ></a-entity>
+        <a-entity
+          id="selector1"
+          gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire_animation%20(1).glb?v=1692024665041"
+          scale="0.3 0.2 0.2"
+          rotation="0 0 0"
+          position="0.8 0.5 -4"
+          visible="true"
+          animation-mixer
+          shadow="receive: false"
+          mixin="orbit"
+        ></a-entity>
+        <a-entity
+          id="selector2"
+          gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire_animation%20(1).glb?v=1692024665041"
+          scale="0.3 0.2 0.2"
+          rotation="0 0 0"
+          position="0.5 1 -4"
+          visible="true"
+          animation-mixer
+          shadow="receive: false"
+          mixin="orbit"
+        ></a-entity>
+      </a-plane>
+      <a-sphere
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EC%88%98%EC%9E%90%EB%AC%B8-yellow.png?v=1693378024187; opacity: 0.1; alphaTest: 0.2; side: double;"
+        position="0 2 -18"
+        id="saja1"
+        color="white"
+        radius="2.5"
+       
+                sound="src: #button2; on: click; poolSize: 3"
+
+        animation="property: position; to: 0 1.7 -8; dur: 8000; loop: false;"
+        animation__1="startEvents: click; property: rotation; to: 0 -360 0; loop: false; delay: 8000; dur: 8000"
+        animation__2="startEvents: click; property: scale; to: 0 0 0; loop: false; delay: 16000; dur: 2000"
+      >
+      </a-sphere>
+      <!--a-entity
+        id="glowPulse"
+        position="0 1.6 -10"
+        animation__spin="property: rotation; from: 0 0 0; to: 0 0 0; dur: 4000; loop: false; easing: linear;"
+      >
+        <a-image
+          width="10"
+          height="10"
+          src="#glow"
+          look-at="#player"
+          color="white"
+          material="transparent: true; opacity: 1.0; alphaTest: 0.01;"
+          animation__pulse="property: material.opacity; from: 2.0; to: 0.5; dur: 5000; loop: false; dir: alternate; easing: linear;"
+        ></a-image>
+      </a-entity-->
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+               <!--a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.6 -5"
+          scale="0 0 0"
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/ring-cross-hollow.glb?v=1673414247390"
+          class="glasses1-entity"
+          id="magic-ring"
+          animation-mixer
+          animation="property: scale; to: 3 1.5 3; delay: 15000; dur: 1000; loop: false"
+        >
+        </a-gltf-model>
+              <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.5 -6"
+          scale="0.23 0.18 0.23"
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/show-ring-big.glb?v=1673414895954"
+          class="glasses2-entity"
+          id="bubble-ring"
+          animation-mixer
+          animation="property: visible; from: false; to: true; delay: 25000; dur: 1000; loop: false"
+        >
+        </a-gltf-model-->
+              <!--a-troika-text
+          id="output"
+          position="0 -0.4 -2.6"
+          color="#fff"
+          max-width="13"
+          max-height="50"
+          curve-radius="0"
+          scale="0.4 0.4 0.4"
+          font="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/AppleSDGothicNeoM.ttf?v=1671085239370"
+          value="        
+              나는 너를 저승으로 안내하는 저승사자다.
+                     
+너는 명부시왕을 만나
+생에 지었던 죄를 심판받게 될 것이다.
+                     
+저승에 온걸 환영한다. 하하하!"
+          align="center"
+          animation="property: position; to: 0 1 -2.7; delay: 10000; dur: 7000; easing: linear; loop: false"
+          animation__1="property: scale; to: 0 0 0; delay: 35000; dur: 500; easing: linear; loop: false"
+        >
+        </a-troika-text>
+              <a-image
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/message-thanks-white-r.png?v=1671948199992"
+          position="0 1 -2.8"
+          material="color: #3F2D81; opacity: 0.5; transparent: true"
+          scale="0 0 0"
+          animation="property: scale; to: 1.8 0.7 0.1; delay: 10000; dur: 1100; easing: linear; loop: false"
+          animation__1="property: scale; to: 0 0 0; delay: 35000; dur: 1000; easing: linear; loop: false"
+        ></a-image-->
+
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/hell-saja-color.gif?v=1691648100228); opacity: 1; alphaTest: 0.5; side: double;"
+        position="-2 1 -8"
+        color="white"
+        scale="2 3 2"
+      ></a-plane-->
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/daltokki-sample.gif?v=1691647204574); opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1 -8"
+        color="white"
+        scale="2 3 2"      
+      ></a-plane-->
+
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire-3352_256.gif?v=1691805072935); opacity: 1; alphaTest: 0.5; side: double;"
+        position="2 1 -8"
+        color="white"
+        scale="2 2 2"
+      ></a-plane-->
+      <a-entity light="type: ambient; intensity: 0.7;"></a-entity>
+      <a-light
+        type="directional"
+        light="castShadow: true;
+                      shadowMapHeight: 1024;
+                      shadowMapWidth: 1024;
+                      shadowCameraLeft: -7;
+                      shadowCameraRight: 5;
+                      shadowCameraBottom: -5;
+                      shadowCameraTop: 5;"
+        id="light"
+        target="dino"
+        position="-1.8 4 1"
+      ></a-light>
+      <a-entity camera position="0 1.6 0" look-controls></a-entity>
+          <button class="button" id="mybutton"></button>     
+    </a-scene>
+           <button class="capturebtn" id="capture" style="vertical-align:middle"></button>
+      <button class="savebtn" id="save" style="vertical-align:middle"></button>
+       <!-- The Modal -->
+      <div id="myModal" class="modal" align="center">
+      <!-- Modal content -->
+      <div>
+        <img class="modal-content" id="img01" />
+        <span
+          class="closebtn">
+          <img
+            src="https://cdn.glitch.global/be340911-435f-4b68-b71f-00337c3212ac/close-white.png?v=1661493491151"
+            width="30px"
+            height="30px"
+          />
+        </span>
+        <div id="caption"></div>
+        
+    </div>
+    </div>
+          
+    </div>
+    </div>
+
+    <script type="text/javascript" src="hmodal_active.js"></script>
+    <script type="text/javascript" src="capture-1.js"></script>      
+    <script>
+    AFRAME.components["look-controls"].Component.prototype.onTouchMove = function (t) {
+                        var PI_2 = Math.PI/2,
+                        e,
+                        o = this.el.sceneEl.canvas,
+                        i = this.yawObject,
+                        j = this.pitchObject;
+                        this.touchStarted && this.data.touchEnabled && (e = 2 * Math.PI * (t.touches[0].pageX - this.touchStart.x) / o.clientWidth, f = 2 * Math.PI * (t.touches[0].pageY - this.touchStart.y) / o.clientHeight, j.rotation.x += .3 * f, i.rotation.y += .5 * e, j.rotation.x = Math.max(-PI_2, Math.min(PI_2, j.rotation.x)), this.touchStart = {
+                                x: t.touches[0].pageX,
+                                y: t.touches[0].pageY
+                            })
+                        }
+    </script>
+     <script>
+    var currentEvent;
+    
+    window.addEventListener('load', function() {
+                // you can access the THREE.Light object from the shadow-light element
+      var lightEl = document.querySelector('a-shadow-light');
+  //    console.log(lightEl.shadowLight);
+      currentEvent = "null";
+    });
+    
+    
+     document.getElementById("start_btn").addEventListener("click", function() {
+      
+        var Start_Area = document.getElementById("start_area");
+        var PlayBtn = document.getElementById("start_btn");
+        this.aud = document.querySelector("#aud");
+ 
+        this.aud.play();   
+       
+        currentEvent = "click";
+        document.getElementById("saja").dispatchEvent(new CustomEvent(currentEvent));
+        document.getElementById("saja1").dispatchEvent(new CustomEvent(currentEvent));
+          
+        Start_Area.parentNode.removeChild(Start_Area);
+  
+      });
+  </script>
+  
+  </body>
+  
+</html>

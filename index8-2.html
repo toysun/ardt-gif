@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name=:"format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-sclable=no, initial-scale=1, maximum-scale=1, minimum-scale-1, width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="google" value="notranslate" />
+
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+
+    <!--script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script-->
+
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/master/components/template/dist/aframe-template-component.min.js"></script>
+
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js">-->
+    <script src="aframe-spritesheet-animation.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="aframe-troika-text.js"></script>
+    <script src="aframe-spe-particles-component.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@master/dist/aframe-particle-system-component.min.js"></script>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene 
+      vr-mode-ui="enabled: false"
+      loading-screen="dotsColor: white; backgroundColor: #grey"
+      device-orientation-permission-ui="enabled: false"
+      ar-session-notifier      
+      arjs="sourceType: webcam; debugUIEnabled: false;">
+       <a-assets>
+        <audio
+          id="button2"
+          src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%ED%83%9C%EC%82%B0%EB%8C%80%EC%99%95-mix.mp3?v=1694125906752"
+        ></audio>
+        <img
+          id="glow"
+          src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/pngimg.com%20-%20light_PNG14449.png?v=1694181820756"
+        />
+      </a-assets>
+                  <a-entity
+        id="selector"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire_animation%20(1).glb?v=1692024665041"
+        scale="0 0 0"
+        rotation="0 0 0"
+        position="-0.9 1.2 -4"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: scale; to: 0.5 0.3 0.4; loop: false; delay: 1000; dur: 2000"   
+      ></a-entity>
+      <a-entity
+        id="selector1"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire_animation%20(1).glb?v=1692024665041"
+        scale="0 0 0"
+        rotation="0 0 0"
+        position="0.8 1.2 -4"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: scale; to: 0.5 0.3 0.4; loop: false; delay: 1000; dur: 2000"   
+      ></a-entity>
+      <a-entity
+        id="selector2"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire_animation%20(1).glb?v=1692024665041"
+        scale="0 0 0"
+        rotation="0 0 0"
+        position="0 1 -4"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: scale; to: 0.5 0.3 0.4; loop: false; delay: 1000; dur: 2000"   
+      ></a-entity>
+              <a-troika-text
+          id="output"
+          position="0 -0.4 -2.6"
+          color="#fff"
+          max-width="13"
+          max-height="50"
+          curve-radius="0"
+          scale="0.4 0.4 0.4"
+          font="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/AppleSDGothicNeoM.ttf?v=1671085239370"
+          value="        
+              나는 일곱번째 왕인 태산대왕이다.
+                     
+가족들이 너를 위해49재를 지내주었다.
+가족들의 염원으로 환생시켜 주겠다.
+                     
+지장보살을 찾아 가거라"
+          align="center"
+          animation="property: position; to: 0 1 -2.7; delay: 10000; dur: 7000; easing: linear; loop: false"
+          animation__1="property: scale; to: 0 0 0; delay: 35000; dur: 500; easing: linear; loop: false"
+        >
+        </a-troika-text>
+              <a-image
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/message-thanks-white-r.png?v=1671948199992"
+          position="0 1 -2.8"
+          material="color: #3F2D81; opacity: 0.5; transparent: true"
+          scale="0 0 0"
+          animation="property: scale; to: 1.8 0.7 0.1; delay: 10000; dur: 1100; easing: linear; loop: false"
+          animation__1="property: scale; to: 0 0 0; delay: 35000; dur: 1000; easing: linear; loop: false"
+        ></a-image>
+                                 <a-circle
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%ED%83%9C%EC%82%B0%EB%8C%80%EC%99%95-t.png?v=1693578284177; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1.6 -16"
+        color="white"
+        radius="1.2"
+        animation="property: position; to: 0 1.6 -6; dur: 2000; loop: false;"
+      ></a-circle>
+                                       <a-sphere
+         material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/golden-dragon-fix.png?v=1693616747459; opacity: 0.5; alphaTest: 0.5; side: double;"
+        position="0 1.6 -6"
+        color="white"
+        radius="1.5"
+ 
+        animation="property: rotation; to: 0 -360 0; loop: true; dur: 2000"
+        animation__2="property: scale; to: 0 0 0; loop: false; delay: 6000; dur: 2000"                                         
+      >
+
+      </a-sphere>
+      
+      <a-entity
+        id="glowPulse"
+        position="0 1.6 -10"
+        animation__spin="property: rotation; from: 0 0 0; to: 0.5 0.5 0.5; dur: 4000; loop: false; easing: linear;"
+      >
+        <a-image
+          width="8"
+          height="8"
+          src="#glow"
+          look-at="#player"
+          color="white"
+          material="transparent: true; opacity: 1.0; alphaTest: 0.01;"
+          animation__pulse="property: material.opacity; from: 2.0; to: 0.5; dur: 5000; loop: false; dir: alternate; easing: linear;"
+        ></a-image>
+      </a-entity>
+                                       <a-circle
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/sound-w.png?v=1694125743676; opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1.6 -1"
+        color="white"
+        radius="0.05"
+                animation="startEvents: click; property: scale;
+          from: 2 1.5 2; to: 1 0.7 1; dur: 1000"
+                animation__1="startEvents: click; property: scale;
+          from: 1 0.7 1; to: 2 1.5 2; dur: 1000"
+        sound="src: #button2; on: click; poolSize: 3"
+      ></a-circle>
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+      <!--a-curvedimage
+        material="shader:gif; src: url(https://cdn.glitch.me/cb8cb838-9f19-470f-9aca-6e773483a84f/dosn-jiok-1.gif?v=1692060360087); opacity: 0.9; alphaTest: 0.5; side: double;"
+        height="3"
+        radius="5.7"
+        theta-length="0"
+        theta-start="0"
+        rotation="0 100 0"
+        scale="8 8 8"
+        position="0 1.6 -6"
+      >
+      </a-curvedimage-->
+
+      <!--a-entity 
+                position="0 5 -5" 
+                rotation="180 180 0"
+                particle-system="preset: default;
+                                 texture: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.png?v=1691995060714; 
+                                 color: #FFF, #BDBDBD; 
+                                 direction: 1; 
+                                 maxAge: 1;
+                                 particleCount: 30;
+                                 size: 5.8;
+                                 positionSpread: 10 10 10;
+                                 velocityValue: 0 12 -10;"
+                 ></a-entity-->
+      <a-troika-text
+        position="0 2.2 -2"
+        font="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/%ED%96%89%EB%B3%B5%EA%B3%A0%ED%9D%A5B.ttf?v=1658800506733"
+        color="#99F"
+        value="태산대왕"
+        material="shader: standard; metalness: 0.8; roughness: 0.4;"
+      ></a-troika-text>
+      <a-entity
+        light="color: #FFF; intensity: 0.5"
+        animation="property: position; from: -1 0 1; to: 1 0 1; loop: true; dir: alternate; dur: 20000; easing: easeInOutQuad;"
+      ></a-entity>
+      <a-sphere radius="0.05" position="0 -0.3 -4" color="#FFFFFF">
+        <!--a-entity
+          spe-particles="
+          texture: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/blood.png?v=1692060883742;
+          color: #FFFFFF, #FFFF00; 
+          size: 10, 1;
+          distribution: sphere;
+          radius: 0.001;
+          velocity: 0.001;
+          velocity-spread: 3.2; 
+          angle: 8, 8.28;
+          particle-count: 100;
+          blending: additive;
+          maxAge: 3; "
+        >
+        </a-entity-->
+      </a-sphere>
+      <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+      <a-light
+        type="directional"
+        light="castShadow: true;
+                      shadowMapHeight: 1024;
+                      shadowMapWidth: 1024;
+                      shadowCameraLeft: -7;
+                      shadowCameraRight: 5;
+                      shadowCameraBottom: -5;
+                      shadowCameraTop: 5;"
+        id="light"
+        target="dino"
+        position="-1.8 4 1"
+      ></a-light>
+      <a-camera rotation-reader look-controls="enabled: false"> </a-camera>
+    </a-scene>
+  </body>
+</html>

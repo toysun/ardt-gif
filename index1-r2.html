@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-sclable=no, initial-scale=1, maximum-scale=1, minimum-scale-1, width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="google" value="notranslate" />
+
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+
+    <!--script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script-->
+
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/master/components/template/dist/aframe-template-component.min.js"></script>
+
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js">-->
+
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+ 
+    
+   
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs="trackingMethod: best;">
+            <a-assets>
+        <audio
+          id="button2"
+          src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/buddha-healing-flute-music-calming-relaxing-music-for-body-souls-161796.mp3?v=1693816599688"
+        ></audio>
+        <img
+          id="glow"
+          src="https://cdn.glitch.global/3d3ecbaf-67a2-4d22-b8ec-ad23b8be5288/glow.png?v=1672756163242"
+        />
+      </a-assets>
+      <a-entity
+        id="selector"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.glb?v=1693368236829"
+        scale="0.0013 0.0013 0.0013"
+        rotation="0 0 0"
+        position="-0.6 1.7 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: position; to: -0.8 1.6 -3; dur: 8000; loop: true; dir: alternate; easing: easeInOutSine"
+      ></a-entity>
+      <a-entity
+        id="selector2"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.glb?v=1693368236829"
+        scale="0.001 0.001 0.0011"
+        rotation="0 0 0"
+        position="0.6 1.2 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: position; to: 0.7 1.1 -3; dur: 8000; loop: true; dir: alternate; easing: easeInOutSine"
+      ></a-entity>
+      <a-entity
+        id="selector1"
+        gltf-model="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/cloud.glb?v=1693368236829"
+        scale="0.0015 0.0015 0.0015"
+        rotation="0 180 0"
+        position="0.7 2.2 -3"
+        visible="true"
+        animation-mixer
+        shadow="receive: false"
+        animation="property: position; to: 0.5 2.2 -3; dur: 8000; loop: true; dir: alternate; easing: easeInOutSine"
+      ></a-entity>
+      <a-circle
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/daltokki.gif?v=1692202523231); opacity: 0.7; alphaTest: 0.5; side: double;"
+        position="0 2 -18"
+        color="white"
+        radius="2"
+        animation="property: position; to: 0.2 1.7 -8; dur: 8000; loop: false;"
+        sound="src: #button2; on: click; poolSize: 3"
+        sound__mouseenter="src: #button2; on: mouseenter; poolSize: 2"
+      ></a-circle>
+      <!--a-sphere
+        material="src: https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/%EB%B3%B5%EC%9E%90%EB%AC%B8-yellow.png?v=1693372317981; opacity: 0.5; alphaTest: 0.2; side: double;"
+        position="0 2 -18"
+        color="white"
+        radius="2"
+        sound="src: #button2; on: click; poolSize: 3"
+        sound__mouseenter="src: #button2; on: mouseenter; poolSize: 2"
+        animation="property: position; to: 0.2 1.7 -8; dur: 8000; loop: false;"
+        animation__1="property: rotation; to: 0 -360 0; loop: false; delay: 8000; dur: 8000"
+        animation__2="property: scale; to: 0 0 0; loop: false; delay: 16000; dur: 2000"
+      >
+      </a-sphere-->
+      <a-entity
+        id="glowPulse"
+        position="0 1.6 -10"
+        animation__spin="property: rotation; from: 0 0 0; to: 0 0 0; dur: 4000; loop: false; easing: linear;"
+      >
+        <a-image
+          width="8"
+          height="8"
+          src="#glow"
+          look-at="#player"
+          color="white"
+          material="transparent: true; opacity: 1.0; alphaTest: 0.01;"
+          animation__pulse="property: material.opacity; from: 2.0; to: 0.5; dur: 5000; loop: false; dir: alternate; easing: linear;"
+        ></a-image>
+      </a-entity>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/hell-saja-color.gif?v=1691648100228); opacity: 1; alphaTest: 0.5; side: double;"
+        position="-2 1 -8"
+        color="white"
+        scale="2 3 2"
+      ></a-plane-->
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/daltokki-sample.gif?v=1691647204574); opacity: 0.9; alphaTest: 0.5; side: double;"
+        position="0 1 -8"
+        color="white"
+        scale="2 3 2"      
+      ></a-plane-->
+
+      <!--a-plane
+        material="shader:gif; src: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/fire-3352_256.gif?v=1691805072935); opacity: 1; alphaTest: 0.5; side: double;"
+        position="2 1 -8"
+        color="white"
+        scale="2 2 2"
+      ></a-plane-->
+      <a-entity light="type: ambient; intensity: 1;"></a-entity>
+      <a-light
+        type="directional"
+        light="castShadow: true;
+                      shadowMapHeight: 1024;
+                      shadowMapWidth: 1024;
+                      shadowCameraLeft: -7;
+                      shadowCameraRight: 5;
+                      shadowCameraBottom: -5;
+                      shadowCameraTop: 5;"
+        id="light"
+        target="dino"
+        position="-1.8 4 1"
+      ></a-light>
+      <a-camera></a-camera>
+    </a-scene>
+  </body>
+</html>
