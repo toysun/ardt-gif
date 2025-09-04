@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>서울대공원</title>
+    <script src="
+https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+"></script>
+
+    <!-- Include font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,400i"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Include Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="app.css" />
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#irNO").text("");
+        $(".js-tab-content").hide();
+        $(".js-tab-content:first").show();
+        $(".js-tab a").click(function (event) {
+          event.preventDefault(); //주소에 #숨김
+          $(this).parent().addClass("current");
+          $(this).parent().siblings().removeClass("current");
+          var tab = $(this).attr("href");
+          $(".js-tab-content").not(tab).css("display", "none");
+          $(tab).fadeIn();
+        });
+      });
+
+      function setArticleText(articleNum) {
+        var irNo = $("#irNO").text();
+        irNo = irNo + articleNum;
+        $("#irNO").text(irNo);
+      }
+
+      function setRemove() {
+        var irNo = $("#irNO").text();
+        if (irNo.length == 0) {
+          return;
+        }
+
+        irNo = irNo.substring(0, irNo.length - 1);
+        $("#irNO").text(irNo);
+      }
+
+      function setPlay() {
+        var curLangCd = "KR";
+
+        var find = false;
+        var findCompanyCd = "";
+        var findProductCd = "";
+        var findDisplayNo = "";
+        var findLanguageCd = "";
+        var irNo = $("#irNO").text();
+        var data = {
+          success: true,
+          errorCode: 0,
+          resultBody: {
+            articleList: [
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001620",
+                articleDesc:
+                  "<b>● 학명 : <i>Agave americana<\/i> L.\n● 과명 : 용설란과 (Agavaceae)<\/b>\n\n용설란은 사막의 뜨겁고 건조한 기후, 경사진 산지, 가뭄에도 살아남을 수 있는 강한 식물입니다. 잎의 형태가 용의 혀를 닮았다 하여 ‘용설란’이라 부릅니다. 잎은 길쭉하고 끝으로 갈수록 가늘어지며, 잎끝 가장자리에는 날카로운 가시가 있습니다. 꽃이 100년에 한 번 핀다고 하여 ‘백년초’라고 부르기도 하지만 실제로는 백 년에 약 세 번 정도 꽃을 피운다고 합니다. 꽃이 핀 후에는 원줄기가 말라 죽고 새순이 돋아납니다.\n시럽, 술, 옷의 재료로 활용이 많은 식물입니다. 햇빛에 강하고 튼튼해 14~16세기 멕시코 아즈텍 문명인들은 의복 재료로 사용하였다고 합니다. 지금도 쉽게 닳지 않고 햇빛에도 강해 밧줄과 노끈의 원료로 사용합니다. 멕시코를 대표하는 증류수인 ‘데킬라’의 재료이기도 합니다. 커다란 통에 용설란 품종 중 ‘아가베 데킬라나’를 넣고 으깬 다음 발효시키면 당이 술로 변하면서 ‘데킬라(tequila)’가 만들어집니다. ‘메스칼(mezcal)’, ‘풀케(pulque)’도 용설란을 사용해 빚은 술입니다. \n원산지는 멕시코와 텍사스주로 건조한 사막기후에서 자생하며, 지금은 전 세계적으로 관상용 식물로 재배하고 있습니다. ",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "1. 데킬라 원료로 사용되는 <b>용설란<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001620.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:16:24",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "1",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001620.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:00:40",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 1,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001622",
+                articleDesc:
+                  "<b>● 학명 : <i>Aloe vera<\/i> (L.) Burm.f.\n● 과명 : 백합과 (Liliaceae)<\/b>\n\n알로에는 잎은 두껍고 모양이 위로 갈수록 점점 가늘어지는 형태이며 잎 가장자리에 날카로운 톱니 모양의 가시가 있습니다. 알로에란 아라비아어로 ‘맛이 쓰다’는 뜻이라고 합니다. 기원전부터 이집트, 로마에서 재배되었고, 잎에서 추출한 수액은 염증과 화상 치료에 효과가 있다고 알려졌습니다. 기원전 4세기 고대 그리스의 철학자 아리스토텔레스가 알렉산더대왕에게 알로에의 효능을 알려주자 알렉산더대왕은 페르시아원정에 나서기 전 알로에가 자생하던 소코트라섬을 정복해 알로에를 채취하고 전쟁에 나갔다고 합니다. \n고대부터 약용으로 사용했습니다. 고대 이집트의 여왕 클레오파트라는 피부 미용을 위해 알로에를 즐겨 사용했으며, 의학의 아버지 히포크라테스는 알로에를 임상치료제로 사용했다고 합니다. 우리나라에서도 알로에를 약재로 활용해왔는데, 조선시대 의서에도 그 효능이 기록되어 있습니다. 서양과 동양을 막론하고 면역력 강화, 장 건강, 혈액순환 촉진, 화상 치료와 피부 미용 등 다양한 효능을 지닌 식물로 알려진 알로에는 현대에 와서 성분과 효능이 과학적으로 입증돼 의약품과 화장품, 건강식품 원료로 쓰이고 있습니다.\n아프리카가 원산지로 전 세계에 약 300종이 있으며 관상용, 의료용 식물로 전세계에서 재배하고 있습니다",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "2.클레오파트라가 피부에 사용했던 <b>알로에<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001622.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:21:27",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "2",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001622.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:02:10",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 2,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001623",
+                articleDesc:
+                  "<b>● 학명 : <i>Echinocactus grusonii<\/i> Hildm. \n● 과명 : 선인장과(Cactaceae)<\/b>\n\n금호선인장은 동그란 초록색 공 모양의 표피에 황금색의 두텁고 바늘처럼 강한 가시를 가지고 있어 ‘황금통 선인장’이라고도 불립니다. 느리게 자라지만 다 자라면 1m까지 자랍니다. 선인장의 가시는 물이 부족한 지역에서 살아남기 위해 물의 증발을 막기 위해 잎이 바늘처럼 변한 것으로 동물로부터 스스로를 보호하는 기능도 있습니다. 오랜 가뭄과 건조에도 견딜 수 있도록 세로로 깊은 주름이 있는데 이를 식물학 용어로 ‘능(稜)’이라 부릅니다. 능은 표면적을 줄여 식물 안의 수분이 수증기가 되어 공기 중으로 나오는 증산작용을 억제해 건조한 사막에서도 자랄 수 있게 해줍니다. 우기에 물을 흡수하면 팽창하고 건기에 수분이 부족하면 수축합니다. 처음에는 8개 정도의 능이 생기며 성장하면서 30개 이상으로 많아집니다. 20년 이상 자라야 꽃을 볼 수 있는데, 줄기 정상에 노란색 둥근 원 모양으로 5~8월에 걸쳐 아름답게 핍니다.\n맥시코 중부지방에서 자생하며, 해발 1,400m 경사면의 화산암에서도 자라는 강인한 식물이지만 현재 야생 서식지에서 과도한 채집으로 멸종위기에 처했습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "3.황금색 가시가 매력적인 <b>금호<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001623.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:21:55",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "3",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001623.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:35:19",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 3,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001624",
+                articleDesc:
+                  "<b>● 학명 : <i>Euphorbia milii<\/i> Des Moul. \n● 과명 : 대극과(Euphorbiaceae)<\/b>\n\n꽃기린은 꽃이 솟아오른 모양이 기린을 닮았다고 해서 붙여진 이름입니다. 사계절 내내 꽃이 피는데, 꽃은 작고 짝을 이뤄 피는데 한 쌍의 꽃잎 같은 빨간 ‘포엽’이 둘러싸고 있습니다.포엽은 잎이 변한 것으로, 꽃이나 꽃받침을 둘러싸고 있는 작은 잎입니다. 싹이나 꽃봉오리를 싸서 보호하는 역할을 합니다. 잎은 넓은 타원형이고 낮은 나무 모양으로 자랍니다. 날카로운 가시가 줄기 전체에 있는데, 예수님이 십자가에 못 박혔을 때 쓴 가시 면류관과 닮았다고 해서 ‘그리스도의 가시’라는 이름도 가지고 있습니다. 이산화탄소를 흡수해 공기를 정화하는 공기정화식물로 관상용으로 화분에 키우기 좋습니다. 열대지방에서는 야외에 관목으로 심기도 합니다. 식물 수액에 독성이 있어 피부나 눈에 닿지 않도록 조심해야 합니다. 식물 추출물은 천연 해충 방제 용품으로 이용되기도 합니다. 특히 달팽이가 옮기는 기생충을 막기 위해 연체동물 천연 살충제로 이용합니다.\n마다가스카르 섬이 원산지로 물 빠짐이 좋은 양지바른 곳에서 자생합니다. 추위에 약해 우리나라에서는 햇빛이 가득한 따뜻한 장소에서만 재배할 수 있습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "4.목이 긴 기린을 닮은<b> 꽃기린<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001624.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:31:25",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "4",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001624.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:36:40",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 4,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001625",
+                articleDesc:
+                  "<b>● 학명 : <i>ereus peruvianus<\/i> (L.) Mill. \n● 과명 : 선인장과(Cactaceae)<\/b>\n\n귀면각선인장은 위로 길쭉하게 자라는 생김새가 기둥을 닮은 기둥선인장의 한 종류입니다. 야생에서는 10m까지 자라며, 열대지방에서는 정원에 많이 심어 흔하게 볼 수 있습니다. 네 줄기에는 각진 주름인 능(稜)이 있으며, 능의 개수에 따라 오각주, 육각주라고도 불립니다. 중심부에 단단하고 질긴 목심이 있어서 기둥을 지탱해주는데, 목심은 물관부가 목질화된 것으로 뿌리에서 흡수한 물이 이동하는 통로입니다. 생장기인 여름에 보름 정도 꽃을 볼 수 있는데, 흰색과 분홍색의 꽃이 밤마다 피고 아침이면 시듭니다. \n\n10m까지 기둥처럼 자라는 모습이 웅장하고 장대해 열대 또는 아열대 국가의 정원에 많이 이용됩니다. 꽃이 지고 나면, ‘페루인의 사과’라고 불리는 붉은색의 열매가 맺히는데 단맛이 나 먹을 수 있습니다. 사막에 사는 동물들의 중요한 먹이 공급원이기도 하며, 아메리카, 페루, 브라질에서 자생합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "5.키다리 기둥선인장 <b>귀면각<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001625.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:31:47",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "5",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001625.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:44:10",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 5,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001626",
+                articleDesc:
+                  "<b>● 학명 : <i>Ravenala madagascariensis<\/i> J.F.Gmelin \n● 과명 : 파초과(Musaceae)<\/b>\n\n부채파초는 신기한 부채모양으로 자라며, 마다가스카르의 열대지방에서 자생합니다. 거대한 노 모양의 이파리들은 부채모양으로 나열된 기다란 잎자루에서 자라는데, 20~35장의 이파리로 구성되어 있습니다. 다른 이름으로 ‘여인초’라고도 불리는데 여인은 ‘여자’가 아니라 ‘여행자’를 뜻합니다. 아마도 목마른 여행객들이 급하게 물을 구할 수 있는 식물이어서 붙여진 이름으로 보입니다. 부채파초는 줄기 사이에 빗물을 1리터가량 저장할 수 있는 공간이 있습니다. 목마른 여행자들에겐 사막의 오아시스처럼 반가운 식물입니다. 식물 안에 고인 물은 위생적이지는 않지만 목마른 여행자에겐 이마저도 고마웠을지 모릅니다. 식물의 이파리가 동·서 방향으로 자라는 습성이 있어 여행자에게 대략의 나침반이 되어줍니다. 꽃이 필 때면 마다가스카르 여우원숭이들이 꿀을 먹기 위해 모여듭니다. 부채파초 꿀은 이들이 가장 좋아하는 주식입니다. 원숭이들이 꿀을 먹는 동안 수분이 이뤄지고 번식할 수 있습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "6.여행자들의 오아시스 <b>부채파초<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001626.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:32:07",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "6",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001626.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:45:19",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 6,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001627",
+                articleDesc:
+                  "<b>● 학명 : <i>Cycas revoluta<\/i> Thunb. \n● 과명 : 소철과 (Cycadaceae)<\/b>\n\n소철은 아열대 지방의 상록 침엽수로 더위에 강하고 추위에 약하기 때문에 우리나라에서는 제주도를 제외하고는 살 수 없습니다. 그렇지만 많은 사람이 실내에서 화분으로 키울 정도로 인기가 많은 식물입니다. 소철과의 하나밖에 없는 식물이며 천 년 이상 생존하는 ‘살아있는 화석’입니다. 소철은 다른 나무와 달리 가지가 없는 것이 특징입니다. 목재로서는 가치가 없는 나무입니다. 하지만 이런 독특한 모습과 사철 푸른 잎이 소철만의 특별하고 개성 있는 매력입니다. 추위만 막아주면 척박한 환경에서도 잘 자라는 강인함과 생명력을 가지고 있습니다. 조선시대에 편찬된 <지봉유설> 식물부 편에 ‘나무가 불에 그슬려 바싹 말라도, 뿌리째 뽑아 3~4일 햇볕에 말려도, 나무 전체에 쇠못을 박아도 되살아난다.’라고 기록되어 있습니다. \n잎이 아름다워 관상수로 많이 키우며, 한방에서는 종자를 중풍 등의 약재로 쓰기도 합니다. \n우리나라의 제주도와 일본의 따뜻한 지역이 원산지로, 제주도에서는 뜰에서도 자라지만 다른 지역에서는 온실이나 집안에서 재배해야 합니다. ",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "7.살아있는 화석으로 알려진 <b>소철<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001627.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:32:23",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "7",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001627.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:46:31",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 7,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001628",
+                articleDesc:
+                  "<b>● 학명 : <i>icus retusa L.<\/i>\n● 과명 : 뽕나무과 (Moraceae)<\/b>\n\n대만고무나무는 도시 환경에서도 잘 자라는 강한 생명력을 지녔으며, 말레이반도, 보르네오 등 동남아시아가 원산지인 열대식물입니다. 도시의 건물 외벽, 다리, 고속도로 등과 같은 콘크리트 구조물에서도 자랄 만큼 강인합니다. 염화칼슘, 아황산가스, 납, 카드뮴을 포함한 오염물질에도 잘 견딥니다. 도로포장도 들어 올릴 정도로 강한 뿌리가 특징이며 열대지역에서는 공중 뿌리가 많이 자랍니다. 잎은 처음에는 좁다가 점점 넓어지면서 광택이 나며 가죽처럼 두꺼워집니다. 잎이 두꺼워서 1년 내내 직사광선을 받아도 웃자라거나 잎이 타는 현상 없이 잘 자랍니다. 강한 햇빛에서도 잘 자라지만 다른 고무나무와 달리 햇빛이 부족한 환경에도 적응하는 힘이 강합니다. 작은 열매가 보라색으로 달리고 검게 익습니다. 원래는 장식용 식물로 널리 분포되었지만 따뜻한 기후에서는 흔한 가로수 중 하나입니다. 우리나라에서는 실내식물로 인기가 많아 분재 형태로도 많이 재배합니다. 대만고무나무의 밑동을 분재처럼 둥글게 재배한 종류를 인삼벤자민, 가지마루, 판다고무나무 등으로 부릅니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "8.콘크리트 사이에서도 자라는  <b>대만고무나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001628.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:33:01",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "8",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001628.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:47:40",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 8,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001629",
+                articleDesc:
+                  "<b>● 학명 : <i>Musa × paradisiaca<\/i> L.\n● 과명 : 파초과 (Musaceae)<\/b>\n\n바나나는 사실 나무가 아니라 여러해살이풀입니다. 다년생인 바나나는 땅속 깊이 들어가 튼튼하게 지지작용을 하는 뿌리줄기와 옆으로 퍼져 영양분을 흡수하는 뿌리털이 나 있고, 긴 타원 모양의 잎이 특징입니다. 꽃은 7~8월에 피는데 꽃줄기의 밑부분에는 암꽃이 커다란 꽃다발 형상으로 달려 있고, 끝부분에는 수꽃이 달립니다. 바나나 송이는 대개 바나나 10~20개로 이루어지는데, 한 나무에 대략 다섯 송이가 열립니다. 바나나가 커지면 줄기는 아래로 축 처지고 바나나는 위쪽으로 구부러지기 시작합니다. 열매는 5~6개월 후에 익으며 다 익으면 땅에 떨어집니다. 익은 바나나는 바로 먹지 않으면 상하기 때문에 수출용 바나나는 완전히 익지 않은 녹색일 때 수확합니다. 바나나는 무덥고 습한 기후에서 자라며 물 빠짐이 좋은 모래질 참흙에서 가장 잘 자랍니다. 우리나라는 기온이 낮아 실외 재배는 불가능하며 제주도 지역 등의 온실에서 소량 재배하고 있습니다. \n우리가 흔하게, 다양한 방법으로 먹는 과일로 단맛과 향기가 좋아 사랑받는 열매입니다. 날것 그대로 먹기도 하며, 다양한 요리에 식재료로 이용하기도 합니다.\n",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "9.나무가 아니라 풀이에요! <b>바나나<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001629.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:33:21",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "9",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001629.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:39:04",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 9,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001630",
+                articleDesc:
+                  "<b>● 학명 : <i>Coffea arabica<\/i> L.\n● 과명 : 꼭두서니과 (Rubiaceae)<\/b>\n\n커피나무를 집에서 키워 커피를 마실 수 있을 때까지 얼마나 걸릴까요? \n커피나무의 고향은 에티오피아로, '커피'라는 이름도 에티오피아의 '카파'라는 커피나무의 원산지 이름에서 유래했습니다. 커피나무는 수확을 위해 지속해서 가지치기해 2m 이내로 키우는 게 좋습니다. 잎은 가지나 줄기에서 마주나고 긴 타원 모양에 두껍고 광택이 나는 짙은 녹색입니다. 흰색 꽃이 피고 떨어지면 그 자리에 빨간색 커피체리가 열립니다. 보통 심은 후 3년이 지나면 첫 수확이 가능합니다. 커피속의 식물은 약 100여 종이 있으며, 3대 원종으로는 아라비카(C.arabica), 카네포라(로부스타커피, C.canephora), 리베리카(C.liberica) 커피가 있습니다. \n우리가 아는 커피 원두는 커피체리 안의 커피콩을 씻어 말린 뒤 볶아 향을 내는 로스팅 처리를 한 것입니다. 종자에는 2% 내외의 카페인이 들어 있는데 이를 추출하여 의약품으로 사용합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "10.커피를 좋아하는 사람들을 위한 <b>커피나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001630.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:34:07",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "10",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001630.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:39:16",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 10,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001631",
+                articleDesc:
+                  "<b>● 학명 : <i>Monstera deliciosa<\/i> Liebm.\n● 과명 : 천남성과 (Araceae)<\/b>\n\n몬스테라의 잎은 중간마다 찢어진 것처럼 구멍이 나 있는 것이 특징입니다. 자생지인 열대우림의 폭우와 강한 바람을 견디고 햇빛이 제한적인 환경에서 적은 양의 빛을 아랫잎까지 전달해 광합성을 효율적으로 할 수 있게 진화했기 때문입니다. 자라는 속도가 빠른 덩굴성식물이기 때문에 지지대를 세워 위로 자랄 수 있게 도와주는 것이 좋습니다. 식물이 뻗어나갈 공간이 충분하면 그늘진 곳에서도 잘 자랍니다. 뿌리에 사는 ‘바나나썩이충’이라는 해충 때문에 수입제한식물로 분류되어 있어 잎의 무늬나 색에 따라 희귀종의 경우 비싸게 판매됩니다.\n키우기가 쉽고 빠르게 자라기 때문에 넓은 공간에 포인트 식재로 인기를 얻고 있습니다. 희귀종의 경우 비싸게 판매돼 최근에는 집에서 판매를 목적으로 키우는 사람들이 늘고 있다고 합니다. 몬스테라 잎에 하얀 무늬가 있으면 ‘알보’, 연두색 무늬가 있으면 ‘민트’, 노란색 무늬가 있으면 ‘옐로우’라고 부르는데, 대부분 민무늬보다 3~10배가량 비싸다고 합니다. 이중 ‘알보’가 가장 인기가 많고 ‘옐로우’는 개체 수가 적어 쉽게 구하지 못하고 비싸 식물계의 비트코인이라 불립니다. \n",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "11.잎 중간마다 구멍이 있는 <b>몬스테라<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001631.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:34:23",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "11",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001631.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:51:19",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 11,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001632",
+                articleDesc:
+                  "<b>● 학명 : <i>Camellia japonica<\/i> L.\n● 과명 : 차나무과 (Theaceae)<\/b>\n\n동백나무는 겨울에도 푸른 잎을 자랑하는 대표적인 겨울나무입니다. 특히 겨울을 지내고 가장 먼저 붉게 피는 동백꽃은 봄이 왔음을 알리는 전령사입니다. 잎 표면은 짙은 녹색이며 광택이 납니다. 특히 빨간색 꽃잎과 노란색 수술의 대비가 선명하고, 꽃이 시들지 않는 상태로 봉오리째 떨어지는 것이 특징입니다. 이런 동백꽃의 특징이 절개와 지조를 상징한다고 여겨져 예로부터 시와 노래, 문학작품에 많이 등장하는 꽃입니다. 차나무과에 속하며 높이 7~15m로 자랍니다.\n해풍과 염기에 매우 강해서 해변과 섬 지역 조경에 많이 이용합니다. 동백나무는 성장 속도가 느려 목재조직이 단단해서 옛날부터 가구나 목기를 만드는 데 사용했습니다. 동백나무 씨앗은 약용과 미용으로, 꽃과 잎은 차로 오래전부터 사랑을 받고 있습니다. 우리 조상들은 동백나무 종자에서 짠 동백기름을 머릿기름으로 활용했으며, 식용유나 호롱불로도 썼습니다. 동백기름은 천식에도 효과있어 민간용법으로 쓰이기도 합니다. 최근에는 동백나무 종자에서 추출한 오일에서 항산화 효능뿐만 아니라 다양한 효능이 있음이 밝혀져 화장품과 약재의 원료로 쓰이고 있습니다. 녹차처럼 차로 마시던 동백나무 잎에서도 ‘카멜리아노시드라’는 항산화 성분이 추출돼 인기가 높아지고 있습니다. \n우리나라의 황해도, 충청남도, 전라남도, 경상남도, 제주도 등의 해변에서 자생하며 중국, 대만, 일본에도 분포합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "12.꽃이 봉오리째 떨어지는 <b>동백나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001632.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:34:40",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "12",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001632.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:45:17",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 12,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001633",
+                articleDesc:
+                  "<b>● 학명 : <i>Machilus thunbergii<\/i> Siebold & Zucc.\n● 과명 : 녹나무과 (Lauraceae)<\/b>\n\n후박나무는 제주도, 여수 오동도를 비롯한 남쪽 다도해의 섬과 울릉도까지 따뜻한 남쪽 섬지방에서 자라는 나무입니다. 후박나무 껍질은 회갈색으로 크게 자라도 갈라지지 않고 매끈한 모양을 그대로 유지합니다. 잎은 긴 타원형으로 매끈한 가죽 같습니다. 꽃은 5-6월에 황록색으로 피며 여름에 흑자색의 둥근 열매가 열립니다. 열매보단 붉은색의 열매꼭지가 활짝 핀 꽃처럼 보여 눈길을 끕니다. 높이 20m 정도까지 우산형으로 자라 웅장한 느낌을 줍니다. 500년 이상을 사는 장수나무로도 알려져 있습니다. \n웅장한 수형으로 예로부터 마을 한복판이나 입구의 정자목으로 활용했습니다. 최근에는 가로수나 공원수로도 많이 심는데 열매는 새의 먹이가 돼 야생동물의 서식에 도움을 줍니다. 동의보감에 ‘후박나무 껍질은 배에서 소리가 나고 소화가 안 되는 것을 낫게 하며, 위장을 따뜻하게 하고 장의 기능을 좋게 한다.’라고 기록되어 있습니다.\n원산지는 우리나라의 제주도, 전라남도, 경상남도 등 남쪽 섬으로, 식재 북한계선은 포항입니다. 중국, 일본, 대만 등에도 분포합니다.\n",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "13.해안을 따라 자라는 장수나무 <b>후박나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001633.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:35:06",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "13",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001633.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:55:28",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 13,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001634",
+                articleDesc:
+                  "<b>● 학명 : <i>Cinnamomum camphora<\/i> (L.) J.Presl \n● 과명 : 녹나무과 (Lauraceae)<\/b>\n\n녹나무는 추위에 약해 연평균기온이 14℃ 이상인 지역에서만 자라는 온대성 식물입니다. 우리나라에서는 제주도에서만 자생하고 서남쪽 따뜻한 해안가에서만 재배합니다. 녹나무는 키 40m, 밑동 둘레가 4m 넘게까지 자라는 나무도 있고, 수명이 길어서 나이가 천 살이 넘은 것도 드물게 있습니다. \n제주도에선 녹나무로 만든 목침이 인기 만점이라고 합니다. 녹나무에는 ‘장뇌향’이라는 독특한 향이 있는데 이 강한 향기 때문에 벌레가 먹지 않고 썩지 않아 옛날부터 왕족의 관을 만드는 데 많이 이용했다고 합니다. 가지·잎·뿌리를 수증기로 증류하여 얻은 장뇌기름은 향료·방충제·강심제를 만드는 원료로 쓰입니다. 이런 이유로 제주도에서는 녹나무를 집주변에 심지 않는다고 합니다. 녹나무에서 나는 독특한 향기에 귀신을 쫓는 힘이 있어서 제삿날에도 조상이 집으로 못 올 것을 염려해서입니다. 반대로 물질을 하는 해녀들은 갖가지 귀신이 범접하지 못하도록 모든 연장을 녹나무로 만들어 썼다고 합니다. 바다에서 일하다가 다친 상처에 녹나무를 태운 연기를 쐬면 치유된다고도 믿었습니다.\n우리나라의 제주도에 자생하며 중국, 대만, 베트남, 일본, 인도네시아 등 온대지역에 분포합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "14.귀신을 쫓는 신성한 나무 <b>녹나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001634.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:35:37",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "14",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001634.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 12:56:53",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 14,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001635",
+                articleDesc:
+                  "<b>● 학명 : <i>Gardenia jasminoides<\/i> var. <i>radicans<\/i> (Thunb.) Makino \n● 과명 : 꼭두서니과 (Rubiaceae)<\/b>\n\n꽃치자, 장미, 재스민···. 이 꽃들의 공통점은 바로 향기가 좋아서 향수를 만드는 향료로 쓰인다는 점입니다. 꽃치자나무의 꽃향기는 한 번 맡으면 잊을 수 없는 달콤하고 강렬한 향이 특징입니다. 꽃치자나무의 영어 이름인 ‘케이프 재스민(Cape jasmine)’은 재스민처럼 향기가 좋아서 붙여진 이름입니다. 남부 지방 기준으로는 6월 초순에서 중순 사이에 하얀색 꽃이 피는데 수국과 비슷한 시기에 피는 여름을 대표하는 꽃 중 하나입니다. 치자나무 꽃과 비슷하지만 꽃치자나무 꽃은 장미처럼 겹꽃으로 조금 더 아름답습니다.\n향수 이름 중 '가드니아'라는 꽃치자나무의 학명이 붙은 것들은 이 치자꽃 향기를 바탕으로 한 향수들입니다. 대표적으로 샤넬의 '가드니아', 산타 마리아 노벨라의 '로사 가데니아', 반클리프 앤 아펠의 '가데니아' 등의 향수가 있습니다. 열매에서는 천연 색소인 치자황색소, 치자적색소, 치자청색소를 얻을 수 있어 음식과 의류의 염료로 이용합니다. 그중 치자황색소는 단무지, 바나나맛우유, 카레 등에 많이 이용하는 천연 색소입니다. \n우리나라의 남부지방에 자생하며 인도차이나, 일본, 중국, 대만 등에 분포합니다. 꽃이 아름답고 꽃향기가 좋아 전 세계적으로 온실에서 관상용으로 많이 재배합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "15.향수회사에서 사랑한 꽃향기 <b>꽃치자나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001635.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:35:57",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "15",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001635.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 13:05:40",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 15,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001636",
+                articleDesc:
+                  "<b>● 학명 : <i>Nepenthes<\/i>\n● 과명 : 네펜데스과 (Nepenthaceae)<\/b>\n\n네펜데스는 척박한 토양에서 살기 위해 부족한 양분을 곤충으로 보충하는 식충식물입니다. 벌레를 유인하고 소화하는 덫인 포충낭은 잎에 변한 것으로, 입술 주변에 꿀이 나오는 분비샘이 있어 벌레를 유인합니다. 꿀은 마취효과가 있어서 꿀을 먹은 곤충들이 중심을 잃고 포충낭 안으로 떨어지게 되는데, 이 포충낭에 곤충이 빠지면 절대 빠져나올 수 없습니다. 포충낭 속에는 소화액이 분비되어 있는데, 포충낭의 뚜껑이 열렸을 때는 중성이지만, 곤충이 잡히면 산성으로 변화되어 소화와 흡수를 돕습니다. 포충낭 위쪽에 있는 뚜껑은 빗물을 막아줘 소화액이 희석되지 않게 도와줍니다. 포충낭은 엄지손가락만 한 것부터 50cm 이상까지 크기가 다양한데, 큰 포충낭에는 개구리, 쥐, 새 등 작은 동물이 빠지기도 합니다. 포충낭의 수명은 잎보다 짧은데, 포식 활동을 많이 하거나 주변 상태에 따라 더 짧아지기도 합니다. \n보르네오를 중심으로 한 열대 아시아가 원산지로, 식물로 덮여 있는 열대우림보다는 개방적이고 햇빛이 잘 드는 능선과 들판에서 자생합니다. \n",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "16.식충식물 중 가장 큰 덫을 지닌 <b>네펜데스<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001636.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:41:08",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "16",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001636.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:45:40",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 16,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001637",
+                articleDesc:
+                  "<b>● 학명 : <i>Platycerium bifurcatum <\/i> (Cav.) C. Chr. \n● 과명 : 고사리과(Pteridaceae)<\/b>\n\n박쥐란은 나무 위에 붙어서 공중에서 자라는데 그 모습이 박쥐가 매달려 있는 것 같아 ‘박쥐란’이라는 이름이 붙었습니다. 이름은 박쥐란이지만 ‘난’은 아니고 포자로 번식하는 고사리과의 열대성 착생 양치식물입니다. 박쥐란은 위로 뻗어 자라는 포자엽과 뿌리 부분을 덮는 둥근 모양의 영양엽이 있습니다. 포자엽은 사슴뿔 모양으로 잎의 뒷면에 포자가 달려 있고 익으면 갈색이 됩니다. 잎에는 은빛의 솜털이 붙어있습니다. 뿌리 밑 부분을 감싸고 있는 영양엽은 수분 증발을 억제하고 영양분을 공급합니다. 박쥐란이 흙에 뿌리를 내리지 않더라도 살 수 있는 것은 영양엽 덕분입니다. 점점 커지면서 자라다가 어느 시점부터는 서서히 갈색으로 말라가면서 서서히 분해됩니다.\n고온다습한 환경에서 잘 자라며 오스트레일리아, 열대 아메리카, 열대 아시아에서 자생합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "17.사슴뿔모양의 잎을 지닌 <b>박쥐란<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001637.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:41:36",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "17",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001637.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 13:09:31",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 17,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001638",
+                articleDesc:
+                  "<b>● 학명 : <i>Dionaea muscipula<\/i> J.Ellis \n● 과명 : 끈끈이귀개과 (Droseraceae)<\/b>\n\n파리지옥은 조개처럼 잎을 여닫으면서 벌레를 잡는 독특하고 빠른 덫이 있어 식충식물 중 가장 많은 호기심을 불러일으킵니다. 파리지옥의 덫은 조개껍데기처럼 2개의 열편으로 구성되었는데, 열편의 가장자리에는 창살처럼 가시가 나 있어 벌레가 빠져나가지 못합니다. 달콤한 향이 나는 즙을 분비해 개미, 파리, 모기 등의 곤충을 유인합니다. 꿀향기에 취한 곤충이 열편 위에 난 짧고 민감한 3개의 감각모 중 두 개의 감각모를 건드리거나 한 개의 감각모를 두 번 건드리면 재빨리 덫을 닫습니다. 덫이 닫힌 후에는 소화액이 분비되고, 4~10일에 걸쳐 소화·흡수한 후 덫이 다시 열립니다. 각각의 덫은 3회 정도 포충활동을 하고 나면 시들고 새로운 포충낭이 생기는데, 이를 통해 포충 활동에 많은 에너지가 소모된다는 것을 알 수 있습니다. 그러니 덫이 오므라드는 것을 보고 싶다고 함부로 덫을 두드리는 행동은 조심해야 합니다. 심하면 식물이 죽을 수도 있습니다.\n파리지옥의 잎은 항암제, 면역조절제, 나병치료제, 불임치료제 등 의약품의 원료로 활용되는 등 활용 가치가 높은 식물입니다.\n북아메리카의 이끼 낀 습지가 원산지로, 지금은 관상용, 교재용, 약재용으로 전세계에서 재배합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "18.식충식물 중 가장 빠르게 벌레를 잡는<b> 파리지옥<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001638.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:42:09",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "18",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001638.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:20:08",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 18,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001639",
+                articleDesc:
+                  "<b>● 학명 : <i>Drosera rotundifolia<\/i> L.\n● 과명 : 끈끈이주걱과 (Droseraceae)<\/b>\n\n끈끈이주걱은 우리나라에서 자생하는 식충식물로 주걱을 닮아 끈끈이주걱이라는 이름이 붙었습니다. 잎의 표면 위와 가장자리에는 머리카락처럼 가는 실 모양의 선모가 있는데, 이 선모 끝에 끈적끈적하고 투명한 점액이 이슬처럼 맺혀 있습니다. 햇빛을 받으면 끈끈이액이 이슬처럼 반짝거려 아름다운데 이 모습으로 벌레를 유인합니다. 잎의 표면에 곤충이 앉으면 선모는 벌레를 둥그렇게 단단히 감싸버리는데 완전히 감싸는 데는 크기에 따라 수십 분에서 수 시간이 걸리기도 합니다. 끈끈이주걱이 분비하는 끈끈이액과 소화액은 다릅니다. 끈끈이액은 벌레의 몸에 달라붙어 도망가지 못하게 선모의 머리 부분부터 감싸버리고 소화액은 선세포로부터 분비되어 곤충의 부드러운 부분을 녹입니다. 분해·흡수된 곤충의 영양분은 끈끈이주걱의 생장을 왕성하게 하고 꽃이 피고 열매를 맺는 데 도움을 줍니다. 만약 끈끈이주걱이 곤충을 잡을 수 없는 환경이라면 꽃이나 종자 맺는 비율이 낮아집니다.우리나라의 산지 습지, 고산 습지에서 자생하며, 전국적으로 30개 이상의 자생지가 있습니다. 일본, 중국, 대만에도 분포합니다.\n",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "19.잎의 모양이 주걱을 닮은 식물 <b>끈끈이주걱<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001639.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:43:49",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "19",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001639.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:19:56",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 19,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001640",
+                articleDesc:
+                  "<b>● 학명 : <i>Sarracenia<\/i>\n● 과명 : 사라세니아과 (Sarraceniaceae)<\/b>\n\n사라세니아는 미국과 캐나다 등 북아메리카 습지와 대초원이 원산지로 땅 위에 솟아있는 나팔 모양으로 생겼습니다. 나팔 모양의 잎은 곤충을 잡는 덫인 포충낭으로 아름다운 색깔, 향, 꿀 등으로 벌레를 유인합니다. 뿌리에서 바로 나와 기둥처럼 꼿꼿하게 바로 선 포충낭은 빗물이 들어가 소화액이 희석되지 않도록 입구에 뚜껑이 있습니다. 꿀은 포충낭의 입구 가장자리 부분이 가장 풍부해 곤충을 유인하고, 포충낭의 내부 벽은 미끄러우며 가늘고 길며 딱딱하고 뾰족한 털이 빽빽이 나 있습니다. 포충낭 안으로 들어온 벌레는 탈출하려고 해도 아래쪽으로 향한 뾰족한 털과 미끄러운 벽면으로 인해 기어오르지 못하고 결국 바닥의 소화액에 빠져 죽게 됩니다. 가을부터 지상부가 시들기 시작하여 겨울에는 지상부가 거의 죽고 지하부만 살아남아 휴면에 들어갑니다. 사라세니아 모든 종은 3~4개월의 겨울 휴면기간이 꼭 필요합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "20.잎의 모양이 트럼펫을 닮은 식충식물 <b>사라세니아<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001640.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:44:12",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "20",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001640.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:21:16",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 20,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001641",
+                articleDesc:
+                  "<b>● 학명 : <i>Pinguicula vulgaris<\/i> L. var. <i>macroceras<\/i> (Pall. ex Link) Herder \n● 과명 : 통발과 (Lentibulariaceae)<\/b>\n\n\n벌레잡이 제비꽃은 늦은 봄에 피는 밝은 자줏빛 꽃이 제비꽃을 닮아 ‘벌레잡이제비꽃’이라고 부릅니다. 다른 식충식물과 달리 잎이 두꺼운 타원형으로 땅에 붙어 퍼지고, 북반구의 한대지방에도 널리 분포합니다. 잎에 작은 선모가 많이 나 있어 점액을 분비하는데 이 점액으로 잎이 반짝이듯 빛이나 곤충을 유인합니다. 끈끈한 점액으로 덮여 있는 잎 위에 곤충이 앉으면 탈출할 수가 없습니다. 탈출하려고 움직일수록 점액으로 뒤범벅돼 결국 질식해 죽습니다. 벌레잡이제비꽃 잎의 가장자리는 소화액을 함유하고 있으며 먹이를 잡거나 소화하는 동안 안쪽으로 말아 올려 얕은 그릇을 형성해 곤충이 빠지지 않게 합니다. 이렇게 소화되고 분해된 영양분은 산성토양의 척박한 환경에서 살아가는 벌레잡이제비꽃의 생장과 개화를 돕습니다.\n우리나라의 높은 산의 습한 바위나 습지에서 서식합니다. 북극지방, 온대지방, 열대지방까지 전 세계에 넓게 분포하고 있으며 산성 토양의 습한 환경에서 잘 자랍니다. ",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "21.다육식물을 닮아 잎이 두꺼운 <b>벌레잡이 제비꽃<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001641.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:44:28",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "21",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001641.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:23:02",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 21,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001642",
+                articleDesc:
+                  "<b>● 학명 : <i>Acer palmatum<\/i> Thunb. \n● 과명 : 단풍나무과(Aceraceae)<\/b>\n\n단풍나무는 아기가 손바닥을 펼친 것처럼, 잎몸이 5~7개로 갈라진 잎 모양이 특징입니다. 가을에 기온이 낮아지면 초록색 엽록소가 만들어지지 않고 빨간색 색소인 안토시아닌이 생겨 잎이 붉게 변합니다. 꽃은 5월에 피며 열매는 10월에 익습니다. 열매는 두 개씩 쌍으로 붙어서 V자 모양의 날개인 열매자루에 달립니다. 두 개의 열매는 날개의 무게중심을 잡아주고, 날개는 두께가 약간 다른 V자 구조로 열매가 떨어질 때 빙빙 회전하며 공중에 오래 떠 있게 됩니다. 또 날개 표면에는 매끄럽지 않고 일정한 결이 있어 공기저항을 적게 받아 멀리 날아갈 수 있습니다. 단풍나무 열매는 땅 위로 착륙하더라도 적당한 바람만 만나면 언제든 다시 공중으로 떠올라 비행할 수 있습니다. 단풍나무 열매의 뛰어난 비행능력은 단풍나무 씨앗이 엄마나무로부터 멀리 떨어질수록 생존율이 높아지기 때문에 진화한 것입니다. 멀리 독립할수록 양분, 햇빛, 물 등 식물 생존에 필요한 요소를 다른 나무들과 경쟁하지 않아도 되기 때문입니다. \n가을이면 붉게 물드는 단풍잎이 아름다워 정원수로 많이 이용하며, 건축과 가구를 만드는 목재로도 사용합니다. 이른 봄 단풍나무에서 채취한 ‘고로쇠 수액’은 당뇨와 위장병 민간요법으로 쓰이기도 합니다. 사탕단풍(Acer saccharum) 줄기의 수액을 농축해 메이플시럽을 만드는데 캐나다에서 주로 생산합니다. \n우리나라에는 단풍나무, 당단풍, 고로쇠나무가 산지에서 자생하며, 전 세계적으로 128종의 단풍나무가 분포합니다. ",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "22.잎모양이 아기 손바닥을 닮은 <b>단풍나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001642.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:45:01",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "22",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001642.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:25:58",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 22,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001643",
+                articleDesc:
+                  "<b>● 학명 : <i>Ulmus parvifolia <\/i> Jacq.\n● 과명 : 느릅나무과 (Ulmaceae)<\/b>\n\n참느릅나무는 우리나라, 중국, 대만, 일본이 원산지로, 표고 50~1,100m 사이에 분포하며, \n키가 큰 식물로 약 10~15m가량 자랍니다. 느릅나무과 중에서 생활 속에서 쓰임새가 많은 식물이라 진짜나무라는 의미의 ‘참’이라는 이름이 붙었습니다. 느릅나무와 비슷하지만 큰 차이는 꽃이 피는 시기입니다. 느릅나무는 3월에 꽃이 피고 열매가 익지만, 참느릅나무는 9월에 꽃이 피고 열매가 익어, 겨울 동안 열매가 가지에 매달려 있습니다. 경주 계림에 있는 참느릅나무는 신라 김씨 왕조의 시조인 김알지가 태어난 신성한 나무로 알려져 있습니다. \n우리 조상들은 봄에 돋아나는 참느릅나무의 어린잎은 나물이나 국으로 끓여 먹었고, 뿌리껍질과 나무껍질은 스트레스와 불면증, 염증을 제거하는 약재로 활용해왔습니다. 나무껍질과 뿌리에서 나오는 수액은 도자기의 광택을 낼 때 사용하고, 피부미용을 위해서도 사용한다고 알려져 있습니다. 목재는 재질이 단단하면서 유연해 가구와 차량 재목으로 사용합니다. ",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "23.신라 김알지 탄생신화와 연관된 <b>참느릅나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001643.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:45:19",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "23",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001643.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:27:32",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 23,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001644",
+                articleDesc:
+                  "<b>● 학명 : <i>Pinus bungeana<\/i> Zucc. ex Endl. \n● 과명 : 소나무과 (Pinaceae)<\/b>\n\n백송은 흰색 나무껍질이 특색있는 소나무과 나무입니다. 어린나무일 때는 나무껍질이 푸르스름 하지만 점점 커나가면서 수피가 큰 비늘처럼 벗겨져 회백색으로 변합니다. 나이가 들수록 흰색이 더욱 선명하게 눈에 띄게 됩니다. 백송은 잎이 나는 모양도 다른 소나무와 다릅니다. 일반 소나무는 잎이 2개씩 모아 나는데 백송은 3개씩 모아 납니다. 다른 소나무보다 성장이 느리고 옮겨심기가 어려워 예전부터 매우 귀한 나무로 소중히 여겨왔습니다. 현재 우리나라에서 크게 자란 백송은 거의 천연기념물로 지정해 보호하고 있습니다.\n백색의 수피와 사철 푸르른 잎의 조화가 아름다워 조선시대부터 궁궐, 사찰의 정원수로 귀하게 여겼습니다. 백송의 흰 껍질은 좋은 일이 일어날 길조를 상징하기도 해 기념수, 관상수로 인기가 높습니다.\n중국 베이징이 원산지로 600여 년 전 중국을 왕래하던 외교사절단에 의해 우리나라에 들어온 것으로 알려져 있습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName:
+                  "24.시간이 지날수록 수피가 하얗게 변하는 <b>백송<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001644.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:45:36",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "24",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001644.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:28:44",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 24,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001645",
+                articleDesc:
+                  "<b>● 학명 : <i>Hydrangea paniculata<\/i> Siebold\n● 과명 : 범의귀과 (Saxifragaceae)<\/b>\n\n수국은 여름을 대표하는 꽃으로, 우리나라, 일본, 중국, 인도네시아, 히말라야, 아메리카 등지에서 자생합니다. 서울대공원식물원 <꽃의언덕>은 초여름, 6월 무렵이면 수국이 활짝 펴 아름다운 수국정원을 이룹니다. 수국은 장마를 알리는 ’비의 꽃‘이라고도 하는데, 수국이 피는 시기가 장마철과 겹치기 때문입니다. 물을 유난히 많이 먹는 수국은 장마철에 맞춰 꽃을 피웁니다. 처음에는 흰색으로 피기 시작하지만, 점차 청색이 되고 다시 붉은색을 더해 나중에는 보라색으로 변합니다. 자체적인 색소에 의해 꽃의 색이 결정되는 게 아니라 토양의 성분에 따라 색깔이 달라집니다. 땅에 알칼리 성분이 강하면 분홍빛이 되고, 산성이 강하면 남색이 됩니다. 같은 정원에서도 수국마다 색이 변화무쌍하고, 한 그루에서도 뿌리의 길이나 수분 흡수, 시간의 흐름에 따라 다른 색으로 피기도 해 꽃을 감상하는 즐거움이 큽니다. 꽃말 역시 꽃의 색처럼 다양합니다. 푸른수국은 ’냉정, 무정‘, 흰수국은 ’변덕, 변심‘, 붉은수국은 ’진실한 사랑‘, 보라수국은 ’진심‘이라는 꽃말을 지녔습니다. \n옛날에는 꽃을 말려 해열제로 사용하기도 했지만, 지금은 관상용으로 많이 심습니다.\n",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "25.여름에 커다란 흰꽃이 피는 <b>나무수국<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001645.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:46:05",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "25",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001645.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:30:01",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 25,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001646",
+                articleDesc:
+                  "<b>● 학명 : <i>Pinus densiflora<\/i> Siebold & Zucc.\n● 과명 : 소나무과 (Pinaceae)<\/b>\n\n소나무는 우리나라를 대표하는 나무로, 우리나라 식물 중 원예종이나 식재종으로 가장 많이 이용하는 상록 침엽수입니다. 소나무의 영어 이름 또한 ’Korean red pine‘입니다. 하지만 우리가 소나무를 부르는 명칭은 참 다양합니다. 솔, 솔나무, ·소오리나무라고도 부르며, 한자로는 송(松), 적송(赤松), 송목(松木), 청송(靑松)이라고도 합니다. 소나무의 보편적인 수명은 대략 500~600년입니다. 한 그루의 나무에 500년이 넘는 역사가 담겨있다보니 벼슬을 받은 소나무도 많이 있습니다. 전국 각지에 수령이 오래된 소나무들은 천연기념물로 보호받고 있습니다. 잎은 2개씩 달리며 2년마다 가을에 떨어집니다. 한 나무에 밑씨솔방울(암꽃)과 꽃가루솔방울(수꽃)이 따로 달리는 암수한그루로 5월에 꽃이 핍니다. \n예부터 ‘소나무 아래에서 태어나 소나무와 더불어 살다가 소나무 아래에서 죽는다.'라는 말이 있을 정도로, 우리 민족과 소나무는 매우 밀접한 관련이 있습니다. 소나무는 건축, 가구, 땔감 등 계층, 장소에 상관없이 두루 쓰인, 없어서는 안 될 자원이었고 우리 문화에 영감을 준 중요한 소재였습니다. 우리 선조들은 소나무를 소재로 글을 짓고, 그림을 그렸는데, 소나무를 소재로 한 대표적인 작품으로 국보 180호인 추사 김정희의 ‘세한도’가 있습니다. 조선시대 궁궐의 임금님 자리 뒤편에 그려진 ‘일월도’에도 아름드리 소나무가 그려져 있습니다.\n우리나라 전국 각지 산야에 자생하며 일본, 중국 동북부, 러시아 등에 분포합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "26.사시사철 늘 푸르른 <b>소나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001646.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:46:26",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "26",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001646.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:31:00",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 26,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001647",
+                articleDesc:
+                  "<b>● 학명 : <i>Ilex cornuta<\/i> Lindl. & Paxton \n● 과명 : 감탕나무과 (Aquifoliaceae)<\/b>\n\n호랑가시나무는 나뭇잎이 호랑이 발톱을 닮았다고 해서 이름 지어진 감탕나무과의 늘 푸른 떨기나무입니다. 영어 이름은 ‘홀리(holly)'로 서양에서는 존엄과 희망을 상징하기도 하며, 액운을 없애는 거룩한 나무로 여깁니다. 기독교에서는 예수의 가시관을 뽑아주려 몸을 던진 로빈새가 즐겨 먹는 열매로 알려져 더욱 신성시합니다. 그래서인지 크리스마스 장식으로 많이 이용하는 식물이자 축복의 선물로 주고받기도 합니다. 일본에서는 음력 2월 4일 호랑가시나무 가지에 정어리를 묶어 문 앞에 매달아 놓으면 여러 가지 역병을 물리칠 수 있다고 생각했고, 영국에서는 지팡이로 만들어 짚고 다니면 행운을 가져와 위험한 일을 막을 수 있다고 생각했습니다. 서울동물원식물원에서 축복과 희망을 가져다준다는 완도호랑가시나무와 사진 한 컷 찍어보면 어떨까요? 액운은 막고 행운은 불러오는 특별한 경험이 될지도 모릅니다.\n전라남북도, 변산반도 해안지역, 제주도의 바닷가나 100m 이하의 낮은 산지에서 모감주나무 등과 군락을 이루어 자생하며, 중국 북부~남부에 분포합니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "27.크리스마스를 상징하는 <b>호랑가시나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001647.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:46:50",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "27",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001647.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:32:03",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 27,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001648",
+                articleDesc:
+                  "<b>● 학명 : <i>Zelkova serrata<\/i> (Thunb.) Makino\n● 과명 : 느릅나무과 (Ulmaceae)<\/b>\n\n느티나무를 중심으로 주민들이 쉴 수 있는 정자가 놓인 것을 시골 마을에 가면 흔하게 볼 수 있으며 우리나라의 경기도, 충청북도, 경상북도, 황해도, 중국 일본 등에 분포합니다.\n느티나무는 마을을 지키는 수문장이자 주민들이 모이는 화합의 장소가 됩니다. 쐐기풀목 느릅나무과에 속하는 낙엽활엽수인 느티나무는 오래된 것은 높이 20m 이상, 줄기의 지름이 3m 정도로 크게 자랍니다. 천연기념물 161호로 보호하고 있는 제주도 성읍민속촌 느티나무는 1,000년이 넘도록 이 마을을 지키고 있는 터줏대감으로 키가 30m, 지름 둘레가 5m에 이르는 거대목입니다. 이런 이유 때문인지 충청북도, 경상북도, 경상남도를 비롯해 많은 지자체에서 느티나무를 도목 혹은 시목으로 지정했고, 서울대학교를 비롯해 많은 학교에서 느티나무를 교목으로 삼고 있습니다. \n느티나무는 예부터 시골 마을의 정자목으로 애용된 대표적인 거목으로 가로수와 조경수로 많이 사용합니다. 집이나 가구, 악기 등을 만드는 고급목재로도 쓰입니다. “서민은 생전 소나무로 만든 집에서 소나무로 만든 가구를 놓고 소나무로 된 가구를 쓰다가 죽어서도 소나무 관에 묻히지만, 양반은 느티나무로 지은 집에서 느티나무 가구를 놓고 살다 느티나무 관에 실려 저승으로 간다.”라는 이야기가 있을 정도로 느티나무는 우리나라 제일의 목재로 평가받습니다. 고궁이나 사찰의 기둥 중에는 느티나무로 만든 것들이 많습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "28.마을을 지켜주는 거목 <b>느티나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001648.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:47:11",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "28",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001648.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:33:02",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 28,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001649",
+                articleDesc:
+                  "<b>● 학명 : <i>Prunus × yedoensis<\/i> Matsum.\n● 과명 : 장미과 (Rosaceae)<\/b>\n\n왕벚나무는 봄을 상징하는 꽃으로 이른 봄에 흰색이나 분홍색의 꽃이 잎보다 먼저 나무 가득 한꺼번에 핍니다. 꽃이 질 때도 필 때처럼 한꺼번에 지기 때문에 꽃잎이 바람에 흩날리는 모습이 마치 꽃비가 내리는 것처럼 아름답습니다. 왕벚나무는 벚나무 중에서도 꽃이 가장 화려합니다. 줄기는 어두운 회색이며 가로로 듬성듬성 줄기가 터진 것처럼 보이는 껍질눈이 있습니다. 껍질눈은 줄기가 호흡하기 위한 조직으로 숨구멍 역할을 합니다. 열매는 5~6월에 체리보다 검붉게 익는데 ‘버찌’라고 하며 달콤하고 살짝 쓴맛이 돕니다. 열매를 먹으면 입 안이 보라색으로 물들어 예부터 아이들의 놀이 소재가 되기도 했습니다.\n우리나라의 제주도 한라산 해발 500~900m 사이에 자생하는데, 4월경 이른 봄에 화려하게 활짝 피는 꽃과 가을철 붉게 물드는 단풍으로 도시의 경관 가치를 높여 지금은 전국적으로 가로수로 많이 이용하고 있습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "29.잎보다 풍성한 꽃이 먼저 피는 <b>왕벚나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001649.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:47:33",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "29",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001649.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-13 14:20:14",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 29,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001650",
+                articleDesc:
+                  "<b>● 학명 : <i>Lagerstroemia indica<\/i> L.\n● 과명 : 부처꽃과 (Lythraceae)<\/b>\n\n배롱나무는 꽃을 보기 쉽지 않은 우리나라의 대표적인 여름 꽃나무입니다. 하지만 한 번 피면 한여름부터 가을까지 오랫동안 분홍빛 꽃을 피우는데, 100일 동안 꽃이 핀다고 해 ‘백일홍’ 또는 초화류 백일홍과 구분하기 위해 ‘목백일홍’이라 부릅니다. 배롱나무의 또 다른 이름은 ‘간지럼나무’입니다. 줄기를 만지면 간지럼을 타듯 나무가 흔들린다고 해서 붙여진 이름으로 아무리 두꺼운 나무라도 손으로 쓰다듬으면 미세하게 흔들리는 것을 관찰할 수 있습니다. 낙엽이 지는 작은키 나무로, 7m 정도까지 자랍니다. \n가로수나 공원수로 많이 심으며, 병충해에도 강해 관상수와 분재로 많이 이용합니다. 꽃은 지혈 효과가 있어 한방 약재로도 쓰입니다.\n중국이 원산지로 우리나라에도 일찍 들어와 조선시대 선비들과 유학자들이 서원과 향교에 많이 심어왔습니다. 추위에 약해 주로 남부지방에서 많이 심었으나, 요즘엔 중부지방 양지바른 곳에서도 월동이 가능해졌습니다.",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "30.100일 동안 꽃이 피는 <b>배롱나무<\/b>",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001650.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-03-21 10:47:52",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "30",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001650.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-04-11 15:34:58",
+                updateUserId: "lsb0214",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 30,
+              },
+              {
+                addr: "",
+                area: "",
+                articleCd: "0001816",
+                articleDesc:
+                  "이름처럼 파리에겐 지옥을 경험하게 하는 파리지옥…\n 조개처럼 입을 잎을 여닫는 모습이 신기해서 식충식물 중 가장 많은 관심을 불러 일으키죠!  세상에! 식물이 움직이다니! 파리지옥은 영양소를 파리 같은 곤충을 통해 얻어요. 달콤하고 향기나는 즙으로 파리, 모기 같은 곤충이 잎 사이로 들어오게 해서 잎을 닫아요. 마치 쥐 덫처럼요!~\n 이때, 잎 가장자리에 있는 창살처럼 생긴 가시를 열편이라고 하는데, 잎을 닫으면 열편이 서로 맞물리게 되요! 그럼 파리는 마치 감옥에 갇힌 것처럼 되는거에요! 잎에서 소화액이 분비되고 4일에서 10일에 걸쳐 곤충을 서서히 녹이면서 소화 시킵니다. 파리지옥은 파리에겐 무서운 포식자지만 우리 인간에게는 항암제, 면역조절제 등 의약품 원료로 활용되는 유익한 식물이랍니다! ",
+                articleImg1: "",
+                articleImg2: "",
+                articleImg3: "",
+                articleImg4: "",
+                articleListImg: "",
+                articleName: "파리지옥 이야기",
+                awsMp3FilePath:
+                  "https://qraudio-mp3.s3.ap-northeast-2.amazonaws.com/P0000090/0001816.mp3",
+                companyCd: "TA000033",
+                createDateTime: "2023-05-09 09:32:54",
+                createUserId: "lsb0214",
+                dispYn: "",
+                displayNo: "31",
+                distanceRange1: 0,
+                distanceRange2: 0,
+                distanceRange3: 0,
+                distanceRange4: 0,
+                distanceRange5: 0,
+                distanceRange6: 0,
+                homePage: "",
+                imgYn: "",
+                languageCd: "KR",
+                latitude1: "",
+                latitude2: "",
+                latitude3: "",
+                latitude4: "",
+                latitude5: "",
+                latitude6: "",
+                length: 2147483647,
+                longitude1: "",
+                longitude2: "",
+                longitude3: "",
+                longitude4: "",
+                longitude5: "",
+                longitude6: "",
+                mp3FilePath: "uploads/TA000033/P0000090/0001816.mp3",
+                numSeq: "",
+                productCd: "P0000090",
+                productName: "서울대공원 식물원",
+                productSeq: 0,
+                recordsTotal: 0,
+                seq: 0,
+                start: 0,
+                tel: "",
+                updateDateTime: "2023-05-09 09:32:54",
+                updateUserId: "",
+                useYn: "Y",
+                videoFilePath: "",
+                viewOrderNo: 31,
+              },
+            ],
+          },
+        };
+        var list = data.resultBody.articleList;
+        //console.log(list);
+        var count = list.length;
+        for (i = 0; i < count; i++) {
+          if (list[i].displayNo == Number(irNo)) {
+            find = true;
+            findCompanyCd = list[i].companyCd;
+            findProductCd = list[i].productCd;
+            findDisplayNo = list[i].displayNo;
+            findLanguageCd = list[i].languageCd;
+            break;
+          }
+        }
+
+        if (find) {
+          var irNo = Number($("#irNO").text());
+          goPlay(findCompanyCd, findProductCd, irNo, findLanguageCd);
+        } else {
+          $("#irNO").text("");
+          var errMsg = "";
+          if (curLangCd == "KR") {
+            errMsg = "입력하신 번호가 없습니다.";
+          } else if (curLangCd == "US") {
+            errMsg = "No Such Number.";
+          } else if (curLangCd == "CN") {
+            errMsg = "您输入的号码不存在。";
+          } else if (curLangCd == "JP") {
+            errMsg = "入力した番号がありません。";
+          } else if (curLangCd == "ID") {
+            errMsg = "No Such Number.";
+          } else if (curLangCd == "RU") {
+            errMsg = "No Such Number.";
+          }
+          alert(errMsg);
+        }
+      }
+
+      function goPlay(companyCd, productCd, displayNo, languageCd) {
+        location.href =
+          "https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=" +
+          companyCd +
+          "&productCd=" +
+          productCd +
+          "&displayNo=" +
+          displayNo +
+          "&languageCd=" +
+          languageCd;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="javascript:history.back();" class="back_btn"
+        ><img src="https://www.qraudio.co.kr/smartQrGuide/webqr/img/back.svg"
+      /></a>
+
+      <h2>오디오 가이드</h2>
+    </header>
+    <section class="content_area">
+      <ul class="js-tab tab_menu">
+        <li class="current"><a href="#tab01">리스트모드</a></li>
+
+        <li><a href="#tab02">번호모드</a></li>
+      </ul>
+      <div id="tab01" class="tab_content js-tab-content">
+        <ul class="audio_list">
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=1&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                1. 데킬라 원료로 사용되는 <b>용설란</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=2&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                2.클레오파트라가 피부에 사용했던 <b>알로에</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=3&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                3.황금색 가시가 매력적인 <b>금호</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=4&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit"> 4.목이 긴 기린을 닮은<b> 꽃기린</b> </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=5&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit"> 5.키다리 기둥선인장 <b>귀면각</b> </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=6&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                6.여행자들의 오아시스 <b>부채파초</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=7&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                7.살아있는 화석으로 알려진 <b>소철</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=8&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                8.콘크리트 사이에서도 자라는 <b>대만고무나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=9&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                9.나무가 아니라 풀이에요! <b>바나나</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=10&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                10.커피를 좋아하는 사람들을 위한 <b>커피나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=11&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                11.잎 중간마다 구멍이 있는 <b>몬스테라</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=12&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                12.꽃이 봉오리째 떨어지는 <b>동백나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=13&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                13.해안을 따라 자라는 장수나무 <b>후박나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=14&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                14.귀신을 쫓는 신성한 나무 <b>녹나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=15&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                15.향수회사에서 사랑한 꽃향기 <b>꽃치자나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=16&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                16.식충식물 중 가장 큰 덫을 지닌 <b>네펜데스</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=17&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                17.사슴뿔모양의 잎을 지닌 <b>박쥐란</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=18&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                18.식충식물 중 가장 빠르게 벌레를 잡는<b> 파리지옥</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=19&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                19.잎의 모양이 주걱을 닮은 식물 <b>끈끈이주걱</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=20&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                20.잎의 모양이 트럼펫을 닮은 식충식물 <b>사라세니아</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=21&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                21.다육식물을 닮아 잎이 두꺼운 <b>벌레잡이 제비꽃</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=22&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                22.잎모양이 아기 손바닥을 닮은 <b>단풍나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=23&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                23.신라 김알지 탄생신화와 연관된 <b>참느릅나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=24&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                24.시간이 지날수록 수피가 하얗게 변하는 <b>백송</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=25&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                25.여름에 커다란 흰꽃이 피는 <b>나무수국</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=26&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit"> 26.사시사철 늘 푸르른 <b>소나무</b> </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=27&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                27.크리스마스를 상징하는 <b>호랑가시나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=28&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                28.마을을 지켜주는 거목 <b>느티나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=29&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                29.잎보다 풍성한 꽃이 먼저 피는 <b>왕벚나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=30&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit">
+                30.100일 동안 꽃이 피는 <b>배롱나무</b>
+              </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.qraudio.co.kr/smartQrGuide/webqr.do?companyCd=TA000033&productCd=P0000090&displayNo=31&languageCd=KR"
+              target="_self"
+              title="오디오 가이드 바로 듣기"
+            >
+              <strong class="tit"> 파리지옥 이야기 </strong>
+              <span class="btn">바로 듣기</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- 탭 2 -->
+      <div id="tab02" class="tab_content js-tab-content">
+        <div class="num">
+          <p>
+            표시되어 있는 숫자를 입력하신 후<br />재생 버튼을 선택해 주세요.
+          </p>
+
+          <h3 id="irNO"></h3>
+
+          <ul class="numbers">
+            <li id="1" onclick="setArticleText(this.id)">1</li>
+            <li id="2" onclick="setArticleText(this.id)">2</li>
+            <li id="3" onclick="setArticleText(this.id)">3</li>
+            <li id="4" onclick="setArticleText(this.id)">4</li>
+            <li id="5" onclick="setArticleText(this.id)">5</li>
+            <li id="6" onclick="setArticleText(this.id)">6</li>
+            <li id="7" onclick="setArticleText(this.id)">7</li>
+            <li id="8" onclick="setArticleText(this.id)">8</li>
+            <li id="9" onclick="setArticleText(this.id)">9</li>
+            <li class="del" onclick="setRemove()"></li>
+            <!--
+                
+                	<li class="del" onclick="setRemove()">삭제</li>
+                
+                
+                                
+                   
+                -->
+            <li id="0" onclick="setArticleText(this.id)">0</li>
+            <li class="play" onclick="setPlay()"></li>
+
+            <!--
+                
+                	<li class="play" onclick="setPlay()">재생</li>
+                   
+                  
+                  
+                  
+				-->
+          </ul>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

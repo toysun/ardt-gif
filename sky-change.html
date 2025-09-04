@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portal - AR.js</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent("image-changer", {
+        init: function () {
+          // grab the elements
+          const nextbtn = document.getElementById("forward");
+          const backbtn = document.getElementById("back");
+          // react to the clicks
+          nextbtn.addEventListener("click", () => {
+            this.index = this.index < this.images.length - 1 ? ++this.index : 0;
+            this.changeImage();
+          });
+          backbtn.addEventListener("click", () => {
+            this.index =
+              this.index != 0 ? --this.index : this.images.length - 1;
+            this.changeImage();
+          });
+          // initial index and images values
+          this.index = 0;
+          this.images = [
+            "https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/wallpaperflare.com_wallpaper.jpg?v=1661826544791",
+            "https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/wallpaperflare.com_wallpaper%20(2).jpg?v=1661826725924",
+            "https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/photo-4.avif?v=1661824148653",
+          ];
+          this.changeImage();
+        },
+        changeImage: function () {
+          this.el.setAttribute("src", this.images[this.index]);
+        },
+      });
+    </script>
+    <style>
+      .menu {
+        position: absolute;
+        bottom: 15px;
+        z-index: 2;
+        right: 15px;
+      }
+
+      .menu a {
+        display: block;
+        background: rgba(0, 0, 0, 0.35);
+        color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        text-decoration: none;
+        font-family: tahoma;
+        margin: 5px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+    <div class="menu">
+      <!--<br>-->
+      <a id="forward">Forward</a>
+      <!--<br>-->
+      <a id="back">Back</a>
+      <!--<br>-->
+      <a id="vr" onclick="document.querySelector('a-scene').enterVR()">VR</a>
+    </div>
+  </head>
+  <body>
+    <a-scene image-toggle vr-mode-ui="enabled: false">
+      <a-sky id="sky" image-changer></a-sky>
+      <a-camera id="camera" look-controls="pointerLockEnabled: false">
+      </a-camera>
+    </a-scene>
+  </body>
+</html>

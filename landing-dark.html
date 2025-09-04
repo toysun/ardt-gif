@@ -1,0 +1,205 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Ardocent Landing Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :colors {
+        color: hsl(228, 12%, 48%);
+        color: hsl(158, 36%, 37%);
+        color: hsl(212, 21%, 14%);
+      }
+      .container {
+        width: 100%;
+        height: 95vh;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        width: 95%;
+        height: 1000px;
+        background-color: black;
+        display: flex;
+        border-radius: 10px;
+      }
+      .box-1 {
+        width: 50%;
+        height: 100%;
+        background: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/wonder-main2.png?v=1662340477389);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px 0 0 10px;
+      }
+
+      .box-2 {
+        width: 50%;
+        height: 100%;
+        margin: 20px;
+      }
+      p {
+        color: white;
+        font-size: 14px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        margin: 20px 0;
+      }
+      #letter {
+        letter-spacing: 0.5em;
+      }
+      h2 {
+        color: white;
+        font-size: 40px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .Price {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 50px;
+      }
+      h4 {
+        color: hsl(158, 36%, 37%);
+        font-size: 50px;
+      }
+      button {
+        font-size: 20px;
+        background-color: hsl(158, 36%, 37%);
+        color: white;
+        padding: 20px 12px;
+        text-align: center;
+        width: 100%;
+        font-weight: 700;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: hsl(158, 35%, 33%);
+      }
+      i {
+        margin-right: 10px;
+      }
+      @media only screen and (max-width: 700px) {
+        .card {
+          flex-direction: column;
+          margin: 20px;
+          width: 100%;
+          height: 90vh;
+          border-radius: 10px;
+        }
+        .box-1 {
+          width: 100%;
+          height: 25%;
+          background: url(https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/wonder-main2.png?v=1662340477389);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 10px 10px 0 0;
+        }
+        .box-2 {
+          width: 100%;
+          padding: 10px;
+          margin: 0;
+          position: relative;
+        }
+        h2 {
+          font-size: 30px;
+        }
+
+        h3 {
+          color: white;
+          font-family: "Montserrat", sans-serif;
+          font-size: 16px;
+        }
+        p {
+          margin: 10px;
+        }
+        .price {
+          margin: 0px;
+        }
+        button-1 {
+          position: absolute;
+          top: 50%;
+          width: 95%;
+        }
+        button-2 {
+          position: absolute;
+          top: 80%;
+          width: 95%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="box-1"></div>
+        <div class="box-2">
+          <p id="letter">Wonder Ticket</p>
+          <h2>원더티켓 AR 체험</h2>
+          <p>
+            아래 버튼을 눌러 원더티켓의 재미있는 AR 증강현실의 세계로 떠나 보세요.
+          </p>
+           &nbsp
+          <!--div class="Price">
+            <h4>No.1</h4>
+            <p>버튼을 눌러 증강현실 페이지로 이동하면 원더티켓 포스터 이미지에 기차를 맞추세요.</p>
+          </div-->  
+          <button type="button" class="button-1">
+            <img
+              src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/capture-32.png?v=1662348795546"
+              alt=""
+            />
+                &nbsp
+           <h3>
+             포스터 이미지 인식하기
+            </h3>
+          </button>
+          &nbsp
+          <!--div class="Price">
+            <h4>No.2</h4>
+            <p>버튼을 눌러 증강현실 페이지로 이동하면 셀프카메라를 얼굴에 맞추세요.</p>
+          </div-->  
+          <button type="button" class="button-2">
+            <img
+              src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/person-32.png?v=1662348164711"
+              alt=""
+            />
+                &nbsp
+           <h3>
+             얼굴 인식하기
+            </h3>
+          </button>
+           &nbsp
+           &nbsp
+          <p>
+                        <img
+              src="https://cdn.glitch.global/cb8cb838-9f19-470f-9aca-6e773483a84f/user-guide.png?v=1662346430637"
+              alt=""
+            />&nbsp 지원기기 : 안드로이드 크롬브라우저, 아이폰 사파리브라우저 (일부 기기의 경우 기기 설정에 따라 작동에 지장이 있을 수 있습니다)
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
